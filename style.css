@@ -20,6 +20,7 @@ Template: kadence
 @import "./assets/css/global-mods.css";
 @import "./assets/css/pull-quote.min.css";
 @import "./assets/css/reviews.min.css";
+@import "./assets/css/view-changelog.css";
 
 @theme inline {
     --font-brand: "Poppins", sans-serif;

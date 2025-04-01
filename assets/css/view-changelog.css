@@ -1,0 +1,12 @@
+.widget_edd-sl-download-details {
+    @apply bg-primary-50 rounded-xl flex flex-col overflow-hidden p-6 mt-8 lg:mt-12;
+
+    .widget-title {
+        @apply normal-case;
+    }
+
+    .daan-edd-sl-view-changelog {
+        @apply !text-primary-500 hover:cursor-pointer;
+    }
+}
+

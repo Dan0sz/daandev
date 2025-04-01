@@ -38,6 +38,10 @@ class Theme {
 		 * Remove after content Buy Block.
 		 */
 		remove_action( 'edd_after_download_content', 'edd_append_purchase_link' );
+
+		/**
+		 * Move and modify EDD Reviews
+		 */
 		remove_filter( 'the_content', [ edd_reviews(), 'load_frontend' ] );
 		add_action( 'kadence_before_footer', [ $this, 'echo_reviews' ] );
 
