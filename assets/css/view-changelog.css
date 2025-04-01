@@ -10,3 +10,22 @@
     }
 }
 
+#daan-edd-sl-changelog {
+    @apply bg-white shadow-2xl flex flex-col;
+
+    .daan-edd-sl-changelog-header {
+        @apply flex items-center shrink-0 bg-primary-50 border-b border-primary-100 mb-4 lg:mb-6;
+
+        .daan-edd-sl-changelog-title {
+            @apply grow p-4 lg:pl-8 font-brand font-semibold lg:text-lg text-neutral-900;
+        }
+
+        #daan-edd-sl-changelog-close {
+            @apply text-2xl shrink-0 p-4 !text-neutral-900 !bg-transparent hover:shadow-none;
+        }
+    }
+
+    .daan-edd-sl-changelog-content {
+        @apply grow px-4 lg:px-8 pb-4 lg:pb-8 overflow-y-auto;
+    }
+}
