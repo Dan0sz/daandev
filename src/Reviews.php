@@ -10,7 +10,16 @@
 namespace Daan\Theme;
 
 class Reviews {
+	/**
+	 * @param $atts
+	 *
+	 * @return false|string|void
+	 */
 	public function render( $atts ) {
+		if ( ! function_exists( 'edd_reviews' ) ) {
+			return;
+		}
+
 		ob_start();
 
 		if ( isset( $atts[ 'multiple' ] ) && 'true' == $atts[ 'multiple' ] && isset( $atts[ 'number' ] ) && isset( $atts[ 'download' ] ) ) {

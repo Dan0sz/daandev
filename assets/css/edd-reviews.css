@@ -1,0 +1,85 @@
+.edd-reviews-area {
+    .edd-reviews-title {
+        @apply font-brand font-semibold mb-[0.5em] text-black text-3xl lg:text-4xl text-left;
+    }
+
+    .edd-review-list {
+        @apply mt-[2rem] grid grid-cols-1 lg:grid-cols-2 gap-4;
+
+        .edd_review {
+            @apply gap-4 m-0 shadow-lg bg-white rounded-xl flex flex-col overflow-hidden p-8;
+
+            .edd-review-body {
+                .edd-review-meta {
+                    .edd-review-author {
+                        @apply flex grid-cols-1 lg:grid-cols-3;
+
+                        .avatar {
+                            @apply flex-none rounded-full;
+                        }
+
+                        b {
+                            @apply grow whitespace-nowrap;
+                        }
+
+                        .edd-review-meta-rating {
+                            @apply text-right flex-none;
+
+                            .dashicons.dashicons-star-filled:before {
+                                @apply text-primary-500;
+                            }
+                        }
+                    }
+
+                    .edd-review-metadata {
+                        @apply -mt-[1.25rem] ml-[4.3rem];
+
+                        &:before {
+                            content: 'Verified Purchase';
+
+                            @apply inline-block bg-secondary-50 text-secondary-700 uppercase border border-secondary-200 rounded-xl text-xs py-1 px-2 font-semibold leading-none;
+                        }
+
+                        p {
+                            @apply inline-block text-sm font-semibold;
+                        }
+                    }
+                }
+
+                .edd-review-content,
+                .reply {
+                    @apply ml-[4.3rem] mt-4;
+                }
+            }
+        }
+
+        .edd-review-navigation {
+            @apply col-span-full text-center
+        }
+    }
+
+    .edd-reviews-form {
+        @apply gap-4 mt-4 shadow-lg bg-white rounded-xl overflow-hidden p-8;
+
+        fieldset {
+            @apply border-0 p-0;
+
+            .edd-reviews-form-inner {
+                @apply grid grid-cols-2 gap-4;
+
+                .edd-reviews-review-title {
+                    @apply w-full;
+                }
+
+                .edd-reviews-star-rating-container {
+                    @apply mt-1;
+                }
+
+                .edd-reviews-review-form-review,
+                .comment-form-cookies-consent {
+                    @apply col-span-full;
+                }
+            }
+        }
+    }
+}

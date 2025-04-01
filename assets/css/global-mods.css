@@ -1,0 +1,7 @@
+blockquote {
+    @apply !border-l-0 px-0;
+
+    &.about-the-author {
+        @apply px-28;
+    }
+}

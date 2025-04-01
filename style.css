@@ -13,7 +13,11 @@ Template: kadence
 @import "tailwindcss";
 @import "./assets/css/buttons.min.css";
 @import "./assets/css/cover.min.css";
+@import "./assets/css/edd.min.css";
+@import "./assets/css/edd-add-to-cart.css";
+@import "./assets/css/edd-reviews.css";
 @import "./assets/css/footer-mods.min.css";
+@import "./assets/css/global-mods.css";
 @import "./assets/css/pull-quote.min.css";
 @import "./assets/css/reviews.min.css";
 
@@ -93,4 +97,3 @@ Template: kadence
     --color-daandev-dark: var(--color-primary-500);
     --color-daandev-extra-dark: var(--color-primary-600);
 }
-

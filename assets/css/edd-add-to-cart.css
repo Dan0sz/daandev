@@ -1,0 +1,94 @@
+body.edd-js .edd-no-js {
+    @apply !hidden;
+}
+
+body.edd-no-js .edd-js {
+    @apply !hidden;
+}
+
+body.single-download aside#secondary {
+    @apply mt-[6rem];
+}
+
+.widget_edd_product_details {
+    @apply p-4 lg:p-6 rounded-lg lg:rounded-xl bg-white border-t-4 border-primary-500 shadow-xl;
+
+    .widget-title {
+        @apply !font-brand !font-semibold !text-xl lg:!text-2xl !normal-case;
+    }
+
+    .edd_download_purchase_form {
+        @apply grid grid-cols-1 gap-4;
+    }
+
+    .edd_price_options ul {
+        @apply grid grid-cols-1 gap-3 pl-0 m-0;
+    }
+
+    .edd_price_options ul li {
+        @apply relative p-3 pl-10 lg:p-4 lg:pl-12 rounded-lg lg:rounded-xl border border-neutral-200 transition hover:bg-neutral-50 before:block before:w-5 before:h-5 before:absolute before:top-4 before:left-3 before:lg:top-5 before:lg:left-4 before:content-[var(--icon-circle-outline)];
+
+        &:has(input:checked) {
+            @apply bg-primary-50 border-primary-500 before:content-[var(--icon-circle-check)];
+        }
+
+        label {
+            @apply flex items-baseline font-brand font-semibold text-[0] leading-none lg:leading-none;
+        }
+
+        .edd_price_option_name {
+            @apply grow lg:text-lg pr-2;
+        }
+
+        .edd_price_option_sep {
+            @apply hidden;
+        }
+
+        .edd_price_option_price {
+            @apply h-1 shrink-0 font-brand lg:text-lg font-semibold text-primary-500;
+
+            .edd-former-price {
+                @apply relative text-sm lg:text-base font-medium text-primary-900 after:absolute after:h-0.5 after:left-0 after:right-0 after:top-1/2 after:-translate-y-1/2 after:bg-error-500 after:opacity-80;
+            }
+
+            small {
+                @apply block font-sans text-right text-xs text-neutral-800;
+            }
+        }
+
+        .ffwp-option-description {
+            @apply not-italic text-sm;
+        }
+
+        input {
+            @apply hidden;
+        }
+    }
+
+    .edd_download_purchase_form {
+        .edd-submit {
+            @apply font-brand font-semibold transition disabled:opacity-50 focus:outline-none bg-primary-500 hover:bg-primary-600 text-white flex items-center justify-center gap-2 rounded-xl text-lg py-2.5 px-6 shadow-lg w-full before:block before:w-[1em] before:h-[1em] before:-mt-1;
+        }
+
+        .edd_go_to_checkout {
+            @apply bg-secondary-500 hover:bg-secondary-600;
+        }
+
+        .edd-add-to-cart,
+        .edd_go_to_checkout {
+            @apply before:content-[var(--icon-cart)];
+        }
+
+        .edd-submit:not(.edd-add-to-cart, .edd_go_to_checkout) {
+            @apply before:content-[var(--icon-external)]
+        }
+
+        .edd-cart-added-alert {
+            @apply flex items-center justify-center gap-1 mt-2;
+
+            .edd-icon {
+                @apply w-[1em] h-[1em] fill-secondary-500;
+            }
+        }
+    }
+}

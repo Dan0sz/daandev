@@ -32,6 +32,20 @@ class Theme {
 		 */
 		add_action( 'after_setup_theme', [ $this, 'register_custom_latest_posts_image_size' ] );
 		add_filter( 'register_block_type_args', [ $this, 'modify_latest_posts_callback' ], null, 2 );
+		add_filter( 'wpseo_breadcrumb_output', [ $this, 'modify_yoast_breadcrumb_output' ], 10 );
+
+		/**
+		 * Remove after content Buy Block.
+		 */
+		remove_action( 'edd_after_download_content', 'edd_append_purchase_link' );
+		remove_filter( 'the_content', [ edd_reviews(), 'load_frontend' ] );
+		add_action( 'kadence_before_footer', [ $this, 'echo_reviews' ] );
+
+		/**
+		 * Additional templates
+		 */
+		add_action( 'kadence_before_footer', [ $this, 'maybe_add_usp_footer' ], 8 );
+		add_action( 'kadence_before_footer', [ $this, 'maybe_add_author_footer' ], 9 );
 
 		/**
 		 * Shortcodes
@@ -42,7 +56,7 @@ class Theme {
 		/**
 		 * Template hooks
 		 */
-		add_action( 'kadence_hero_header', 'maybe_add_download_hero_header' );
+		add_action( 'kadence_hero_header', [ $this, 'maybe_add_download_hero_header' ] );
 	}
 
 	/**
@@ -56,6 +70,40 @@ class Theme {
 
 		// Tailwind CSS compiled file
 		wp_enqueue_style( 'daan-dev-tailwind-css', get_stylesheet_directory_uri() . '/assets/css/output.css', [ 'kadence-theme-css' ], $file_modified );
+	}
+
+	/**
+	 * @return void
+	 */
+	public function echo_reviews() {
+		if ( ! function_exists( 'edd_reviews' ) ) {
+			return;
+		}
+		?>
+        <div class="daan-dev-reviews bg-primary-50 py-12 lg:py-16">
+            <div class="site-container">
+				<?php echo edd_reviews()->load_frontend( '' ); ?>
+            </div>
+        </div>
+		<?php
+	}
+
+	/**
+	 * @return void
+	 */
+	public function maybe_add_usp_footer() {
+		if ( is_singular( get_post_type() ) && get_post_type() === 'download' ) {
+			get_template_part( 'template-parts/content/usp' );
+		}
+	}
+
+	/**
+	 * @return void
+	 */
+	public function maybe_add_author_footer() {
+		if ( is_singular( get_post_type() ) && get_post_type() === 'download' ) {
+			get_template_part( 'template-parts/content/author' );
+		}
 	}
 
 	/**
@@ -99,6 +147,17 @@ class Theme {
 		}
 
 		return $settings;
+	}
+
+	/**
+	 * Add Tailwind classes to Yoast Breadcrumbs.
+	 *
+	 * @param $output
+	 *
+	 * @return string
+	 */
+	public function modify_yoast_breadcrumb_output( $output ) {
+		return '<nav aria-label="Breadcrumb" class="text-xs leading-none mt-4 lg:mt-6 mb-8 lg:mb-12" vocab="https://schema.org/" typeof="BreadcrumbList">' . $output . '</nav>';
 	}
 
 	/**
