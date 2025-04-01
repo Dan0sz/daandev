@@ -11,7 +11,7 @@ Template: kadence
 */
 
 @import "tailwindcss";
-@import "./assets/css/buttons.min.css";
+@import "./assets/css/buttons.css";
 @import "./assets/css/cover.min.css";
 @import "./assets/css/edd.min.css";
 @import "./assets/css/edd-add-to-cart.css";

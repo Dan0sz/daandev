@@ -63,13 +63,17 @@ class Theme {
 	 * Enqueue styles and Tailwind CSS
 	 */
 	public function daandev_enqueue_scripts() {
+		$file_modified = filemtime( get_stylesheet_directory() . '/assets/js/edd-add-to-cart.min.js' );
+
+		wp_enqueue_script( 'daan-dev-add-to-cart', get_stylesheet_directory_uri() . '/assets/js/edd-add-to-cart.min.js', [], $file_modified, [ 'defer' => true ] );
+
 		// Parent theme styles
-		wp_enqueue_style( 'kadence-theme-css', get_template_directory_uri() . '/style.css' );
+		wp_enqueue_style( 'kadence-theme', get_template_directory_uri() . '/style.css' );
 
 		$file_modified = filemtime( get_stylesheet_directory() . '/assets/css/output.css' );
 
 		// Tailwind CSS compiled file
-		wp_enqueue_style( 'daan-dev-tailwind-css', get_stylesheet_directory_uri() . '/assets/css/output.css', [ 'kadence-theme-css' ], $file_modified );
+		wp_enqueue_style( 'daan-dev-tailwind', get_stylesheet_directory_uri() . '/assets/css/output.css', [ 'kadence-theme' ], $file_modified );
 	}
 
 	/**
