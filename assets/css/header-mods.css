@@ -1,0 +1,6 @@
+/**
+ * Header mods.
+ */
+.main-navigation .primary-menu-container > ul li.menu-item > a {
+    font-weight: 600 !important;
+}

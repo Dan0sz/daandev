@@ -19,9 +19,11 @@ Template: kadence
 @import "./assets/css/edd-reviews.css";
 @import "./assets/css/footer-mods.min.css";
 @import "./assets/css/global-mods.css";
+@import "./assets/css/header-mods.css";
 @import "./assets/css/pull-quote.min.css";
 @import "./assets/css/reviews.min.css";
 @import "./assets/css/view-changelog.css";
+@import "./assets/css/widgets.min.css";
 
 @theme inline {
     --font-brand: "Poppins", sans-serif;

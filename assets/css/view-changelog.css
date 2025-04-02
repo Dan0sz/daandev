@@ -11,7 +11,7 @@
 }
 
 #daan-edd-sl-changelog {
-    @apply bg-white shadow-2xl flex flex-col;
+    @apply bg-white shadow-2xl flex flex-col rounded-xl;
 
     .daan-edd-sl-changelog-header {
         @apply flex items-center shrink-0 bg-primary-50 border-b border-primary-100 mb-4 lg:mb-6;
