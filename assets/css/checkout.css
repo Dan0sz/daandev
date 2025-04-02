@@ -104,7 +104,7 @@
 
     #edd_sl_cancel_renewal_form {
         p {
-            @apply before:inline-block pl-4 pr-2 lg:bg-white before:w-3 before:-mt-0.5 before:content-[var(--icon-repeat)] before:lg:content-[var(--icon-repeat-blue)];
+            @apply before:inline-block p-0 lg:px-4 lg:bg-white before:w-3 before:-mt-0.5 before:content-[var(--icon-repeat)] before:lg:content-[var(--icon-repeat-blue)];
 
             input.edd-submit {
                 @apply font-brand font-semibold transition disabled:opacity-50 focus:outline-none bg-primary-500 lg:bg-white hover:bg-primary-600 hover:lg:bg-white text-white lg:text-primary-500 !inline-flex w-full lg:w-auto items-center justify-center gap-1 rounded-md text-sm py-1.5 px-2 lg:p-0 shadow-lg lg:shadow-none;
