@@ -23,7 +23,7 @@ $brand = daan_get_brand( get_the_ID() );
                         <div class="-ml-12 sm:-ml-16 lg:-ml-[5.75rem]">
                             <img src="<?php echo daan_get_logo_light( get_the_ID() ); ?>" class="block !h-24 sm:!h-32 lg:!h-46">
                             <div class="pl-[calc(6rem+(6rem/10.71))] sm:pl-[calc(8rem+(8rem/10.71))] lg:pl-[calc(11.5rem+(11.5rem/10.71))]">
-                                <h1 class="font-brand text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold !text-white">
+                                <h1 class="font-brand !text-xl sm:!text-2xl md:!text-3xl lg:!text-4xl xl:!text-5xl font-semibold !text-white">
 									<?php echo daan_get_tagline( get_the_ID() ); ?>
                                 </h1>
                             </div>

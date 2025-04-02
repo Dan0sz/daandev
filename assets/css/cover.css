@@ -5,6 +5,10 @@
     font-family: Poppins, sans-serif;
 }
 
+.cover-padding {
+    @apply bg-primary-50 py-12 lg:py-16;
+}
+
 /**
  * Align Wide
  */

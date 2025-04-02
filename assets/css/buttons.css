@@ -1,15 +1,16 @@
 /**
  * Buttons
  */
+.wp-block-buttons {
+    .wp-block-button {
+        @apply !w-full lg:!w-auto;
+    }
+}
+
 .wp-block-latest-posts button {
-    -webkit-appearance: button;
-    background-color: transparent;
-    background-image: none;
-    color: var(--color-primary-500);
-    padding: 0;
-    margin-top: 2rem;
+    @apply bg-transparent bg-none p-0 mt-[2rem] text-primary-500;
 }
 
 .wp-block-latest-posts button:hover {
-    box-shadow: none;
+    @apply shadow-none;
 }

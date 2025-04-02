@@ -20,8 +20,5 @@
  * Middle Footer
  */
 .site-middle-footer-wrap .site-footer-row-container-inner {
-    background-image: linear-gradient(to bottom right, #00adda, #1ccaf4);
-    margin-left: -3rem;
-    margin-right: -3rem;
-    border-radius: 1.5rem;
+    @apply bg-linear-to-br to-primary-500 from-primary-400 -mx-0 lg:-mx-[3rem] rounded-3xl;
 }

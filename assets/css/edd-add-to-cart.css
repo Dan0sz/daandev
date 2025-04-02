@@ -7,7 +7,7 @@ body.edd-no-js .edd-js {
 }
 
 body.single-download aside#secondary {
-    @apply mt-[6rem];
+    @apply mt-[6rem] sticky max-h-[70vh] top-4;
 }
 
 .widget_edd_product_details {

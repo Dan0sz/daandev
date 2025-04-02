@@ -90,7 +90,7 @@ class Theme {
 	 * @return void
 	 */
 	public function echo_reviews() {
-		if ( ! function_exists( 'edd_reviews' ) || edd_is_checkout() ) {
+		if ( ! function_exists( 'edd_reviews' ) || ! is_singular( get_post_type() ) || get_post_type() !== 'download' || edd_is_checkout() ) {
 			return;
 		}
 		?>
@@ -147,6 +147,7 @@ class Theme {
 		if ( edd_is_checkout() ) {
 			remove_action( 'kadence_primary_navigation', 'Kadence\primary_navigation' );
 			remove_action( 'kadence_secondary_navigation', 'Kadence\secondary_navigation' );
+			remove_action( 'kadence_navigation_popup_toggle', 'Kadence\navigation_popup_toggle' );
 		}
 	}
 
@@ -157,9 +158,23 @@ class Theme {
 	 */
 	public function maybe_change_footer() {
 		if ( edd_is_checkout() ) {
-			remove_action( 'kadence_top_footer', 'Kadence\top_footer' );
+			//			remove_action( 'kadence_top_footer', 'Kadence\top_footer' );
 			remove_action( 'kadence_middle_footer', 'Kadence\middle_footer' );
 			add_action( 'kadence_middle_footer', [ $this, 'show_checkout_footer' ] );
+		}
+
+		$is_download = is_singular( get_post_type() ) && get_post_type() === 'download';
+
+		global $post;
+
+		$content = '';
+
+		if ( ! empty( $post ) ) {
+			$content = $post->post_content;
+		}
+
+		if ( ! is_front_page() && ! $is_download && $content && ! has_shortcode( $content, 'daan-featured-downloads' ) ) {
+			remove_action( 'kadence_top_footer', 'Kadence\top_footer' );
 		}
 	}
 

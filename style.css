@@ -11,16 +11,17 @@ Template: kadence
 */
 
 @import "tailwindcss";
+@import "./assets/css/blog.css";
 @import "./assets/css/buttons.css";
 @import "./assets/css/checkout.css";
-@import "./assets/css/cover.min.css";
+@import "./assets/css/cover.css";
 @import "./assets/css/edd.min.css";
 @import "./assets/css/edd-add-to-cart.css";
 @import "./assets/css/edd-reviews.css";
-@import "./assets/css/footer-mods.min.css";
+@import "./assets/css/footer-mods.css";
 @import "./assets/css/global-mods.css";
 @import "./assets/css/header-mods.css";
-@import "./assets/css/pull-quote.min.css";
+@import "./assets/css/pull-quote.css";
 @import "./assets/css/reviews.min.css";
 @import "./assets/css/view-changelog.css";
 @import "./assets/css/widgets.min.css";

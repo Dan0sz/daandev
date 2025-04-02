@@ -2,7 +2,7 @@
  * Pull Quote Block
  */
 .daan-dev-quote {
-    height: 280px;
+    @apply py-4 lg:py-8 text-black dark:text-white rounded lg:rounded-lg text-center px-10 lg:px-28;
 }
 
 .daan-dev-quote blockquote {
