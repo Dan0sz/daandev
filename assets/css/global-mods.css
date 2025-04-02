@@ -5,3 +5,7 @@ blockquote {
         @apply px-28;
     }
 }
+
+fieldset {
+    @apply !border-0 !p-0 !mt-0;
+}

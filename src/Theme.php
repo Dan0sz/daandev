@@ -58,6 +58,12 @@ class Theme {
 		add_action( 'init', [ $this, 'add_featured_downloads_shortcode' ], 11 );
 
 		/**
+		 * Modify the Header/Footer in checkout.
+		 */
+		add_action( 'wp', [ $this, 'maybe_change_header' ] );
+		add_action( 'wp', [ $this, 'maybe_change_footer' ] );
+
+		/**
 		 * Template hooks
 		 */
 		add_action( 'kadence_hero_header', [ $this, 'maybe_add_download_hero_header' ] );
@@ -84,7 +90,7 @@ class Theme {
 	 * @return void
 	 */
 	public function echo_reviews() {
-		if ( ! function_exists( 'edd_reviews' ) ) {
+		if ( ! function_exists( 'edd_reviews' ) || edd_is_checkout() ) {
 			return;
 		}
 		?>
@@ -100,7 +106,7 @@ class Theme {
 	 * @return void
 	 */
 	public function maybe_add_usp_footer() {
-		if ( is_singular( get_post_type() ) && get_post_type() === 'download' ) {
+		if ( ( is_singular( get_post_type() ) && get_post_type() === 'download' ) || edd_is_checkout() ) {
 			get_template_part( 'template-parts/content/usp' );
 		}
 	}
@@ -130,6 +136,55 @@ class Theme {
 	 */
 	public function add_featured_downloads_shortcode() {
 		add_shortcode( 'daan-featured-downloads', [ new FeaturedDownloads(), 'render' ] );
+	}
+
+	/**
+	 * Removes the navigation from the header, to make it distraction free.
+	 *
+	 * @return void
+	 */
+	public function maybe_change_header() {
+		if ( edd_is_checkout() ) {
+			remove_action( 'kadence_primary_navigation', 'Kadence\primary_navigation' );
+			remove_action( 'kadence_secondary_navigation', 'Kadence\secondary_navigation' );
+		}
+	}
+
+	/**
+	 * Loads an alternate, distraction free footer in checkout.
+	 *
+	 * @return void
+	 */
+	public function maybe_change_footer() {
+		if ( edd_is_checkout() ) {
+			remove_action( 'kadence_top_footer', 'Kadence\top_footer' );
+			remove_action( 'kadence_middle_footer', 'Kadence\middle_footer' );
+			add_action( 'kadence_middle_footer', [ $this, 'show_checkout_footer' ] );
+		}
+	}
+
+	/**
+	 * Add an additional check to @see edd_is_checkout()
+	 *
+	 * @param $value
+	 *
+	 * @return mixed|true
+	 */
+	public function filter_is_checkout( $value ) {
+		if ( str_contains( $_SERVER[ 'REQUEST_URI' ], '/checkout' ) ) {
+			return true;
+		}
+
+		return $value;
+	}
+
+	/**
+	 * Load an alternate, distraction free footer.
+	 *
+	 * @return void
+	 */
+	public function show_checkout_footer() {
+		get_template_part( 'template-parts/footer/checkout' );
 	}
 
 	/**

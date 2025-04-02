@@ -1,9 +1,11 @@
-<div class="daan-dev-usp bg-primary-50 py-12 lg:py-16 mt-12">
+<div class="daan-dev-usp bg-primary-50 <?php if ( ! edd_is_checkout() ) : ?>py-12 lg:py-16 mt-12<?php else: ?>pb-12 lg:pb-16<?php endif; ?>">
     <div class="site-container">
         <div class="container">
-            <h2 class="font-brand font-semibold !mb-[0.5em] text-black !text-4xl text-left wp-block-heading" id="">
-                No hassle. No Fuss.
-            </h2>
+			<?php if ( ! edd_is_checkout() ) : ?>
+                <h2 class="font-brand font-semibold !mb-[0.5em] text-black !text-4xl text-left wp-block-heading" id="">
+					<?php echo __( 'No hassle. No Fuss.', 'daandev' ); ?>
+                </h2>
+			<?php endif; ?>
             <div class="wp-block-icon-list  lg:grid lg:gap-8 lg:grid-cols-4">
                 <div>
                     <div class="w-full h-auto flex lg:mb-0 flex-row mb-8">
@@ -12,7 +14,7 @@
                         </svg>
                         <div class="flex-grow">
                             <div class="mb-0.5 lg:mb-1 font-brand font-semibold text-lg lg:text-xl text-black">
-                                1 year of updates &amp; support
+								<?php echo __( '1 year of updates &amp; support', 'daandev' ); ?>
                             </div>
                         </div>
                     </div>
@@ -24,7 +26,7 @@
                         </svg>
                         <div class="flex-grow">
                             <div class="mb-0.5 lg:mb-1 font-brand font-semibold text-lg lg:text-xl text-black">
-                                14 day money back guarantee
+								<?php echo __( '14 day money back guarantee', 'daandev' ); ?>
                             </div>
                         </div>
                     </div>
@@ -36,7 +38,7 @@
                         </svg>
                         <div class="flex-grow">
                             <div class="mb-0.5 lg:mb-1 font-brand font-semibold text-lg lg:text-xl text-black">
-                                Easy upgrading of your license
+								<?php echo __( 'Easy upgrading of your license', 'daandev' ); ?>
                             </div>
                         </div>
                     </div>
@@ -48,7 +50,7 @@
                         </svg>
                         <div class="flex-grow">
                             <div class="mb-0.5 lg:mb-1 font-brand font-semibold text-lg lg:text-xl text-black">
-                                Unlimited activation for dev environments
+								<?php echo __( 'Unlimited activation for dev environments', 'daandev' ); ?>
                             </div>
                         </div>
                     </div>
