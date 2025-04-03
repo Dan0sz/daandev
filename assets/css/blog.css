@@ -52,3 +52,33 @@
         }
     }
 }
+
+nav.navigation.pagination {
+    .nav-links {
+        .next.page-numbers {
+            @apply relative;
+
+            .kadence-svg-iconset {
+                &.svg-baseline {
+                    svg {
+                        @apply absolute top-[0.3em] left-0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.entry-related-carousel {
+    .splide__track {
+        @apply pb-6;
+
+        .carousel-item {
+            @apply shadow-lg bg-white rounded-xl flex flex-col overflow-hidden mb-8 lg:mb-0 block;
+
+            .entry {
+                @apply shadow-none;
+            }
+        }
+    }
+}
