@@ -8,6 +8,8 @@
 
 namespace Daan\Theme;
 
+use function Kadence\kadence;
+
 class Theme {
 	/**
 	 * Build class.
@@ -58,15 +60,28 @@ class Theme {
 		add_action( 'init', [ $this, 'add_featured_downloads_shortcode' ], 11 );
 
 		/**
+		 * Add Account Menu
+		 */
+		add_action( 'init', [ $this, 'add_account_menu' ] );
+
+		/**
 		 * Modify the Header/Footer in checkout.
 		 */
 		add_action( 'wp', [ $this, 'maybe_change_header' ] );
 		add_action( 'wp', [ $this, 'maybe_change_footer' ] );
 
 		/**
+		 * Disable WP Help Scout Docs' default template, so we can use our own archive template.
+		 */
+		add_filter( 'wp_help_scout_docs_add_rewrite_rule', '__return_false' );
+		add_action( 'pre_get_posts', [ $this, 'maybe_load_all_posts' ] );
+		add_filter( 'kadence_title_elements_template_path', [ $this, 'maybe_disable_template_element' ], 10, 2 );
+
+		/**
 		 * Template hooks
 		 */
 		add_action( 'kadence_hero_header', [ $this, 'maybe_add_download_hero_header' ] );
+
 	}
 
 	/**
@@ -139,16 +154,83 @@ class Theme {
 	}
 
 	/**
+	 * Registers the Account menu position.
+	 *
+	 * @return void
+	 */
+	public function add_account_menu() {
+		register_nav_menu( 'daan-account-menu', __( 'Account Menu', 'daandev' ) );
+	}
+
+	/**
 	 * Removes the navigation from the header, to make it distraction free.
 	 *
 	 * @return void
 	 */
 	public function maybe_change_header() {
+		remove_action( 'kadence_primary_navigation', 'Kadence\primary_navigation' );
+		add_action( 'kadence_primary_navigation', [ $this, 'primary_navigation' ] );
+
 		if ( edd_is_checkout() ) {
-			remove_action( 'kadence_primary_navigation', 'Kadence\primary_navigation' );
 			remove_action( 'kadence_secondary_navigation', 'Kadence\secondary_navigation' );
 			remove_action( 'kadence_navigation_popup_toggle', 'Kadence\navigation_popup_toggle' );
 		}
+	}
+
+	/**
+	 * Copied from @see \Kadence\primary_navigation() and modified to include an account menu and shopping cart.
+	 *
+	 * @return void
+	 */
+	public function primary_navigation() {
+		/**
+		 * Desktop Navigation
+		 */
+		$openType = get_theme_mod( 'primary_navigation_open_type' );
+		?>
+        <nav id="site-navigation" class="main-navigation header-navigation <?php echo $openType == 'click' ? 'click-to-open' : 'hover-to-open'; ?> nav--toggle-sub header-navigation-style-<?php echo esc_attr(
+			kadence()->option( 'primary_navigation_style' )
+		); ?> header-navigation-dropdown-animation-<?php echo esc_attr(
+			kadence()->option( 'dropdown_navigation_reveal' )
+		); ?>" role="navigation" aria-label="<?php esc_attr_e( 'Primary Navigation', 'kadence' ); ?>">
+			<?php
+			kadence()->customizer_quick_link();
+			?>
+            <div class="primary-menu-container header-menu-container">
+				<?php
+				if ( kadence()->is_primary_nav_menu_active() ) {
+					kadence()->display_primary_nav_menu( [ 'menu_id' => 'primary-menu' ] );
+				} else {
+					kadence()->display_fallback_menu();
+				}
+				?>
+            </div>
+            <div class="daandev-menu ml-6 flex items-center gap-2 md:gap-4">
+                <ul id="daan-dev-menu" class="menu daan-dev-account">
+                    <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item--has-toggle">
+                        <svg class="fill-current w-[1em] h-[1em] block text-xl" viewBox="0 0 448 512">
+                            <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512l388.6 0c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304l-91.4 0z"></path>
+                        </svg>
+						<?php if ( is_user_logged_in() ) : ?>
+							<?php
+							wp_nav_menu(
+								[
+									'theme_location'  => 'daan-account-menu',
+									'menu_class'      => 'sub-menu',
+									'menu_id'         => 'daan-dev-account-menu',
+									'container_class' => 'daan-dev-account-menu',
+									'container'       => 'ul',
+									'mega_support'    => true,
+									'addon_support'   => true,
+								]
+							);
+							?>
+						<?php endif; ?>
+                    </li>
+                </ul>
+            </div>
+        </nav><!-- #site-navigation -->
+		<?php
 	}
 
 	/**
@@ -173,7 +255,7 @@ class Theme {
 			$content = $post->post_content;
 		}
 
-		if ( ! is_front_page() && ! $is_download && $content && ! has_shortcode( $content, 'daan-featured-downloads' ) ) {
+		if ( ( ! is_front_page() && ! $is_download && $content && ! has_shortcode( $content, 'daan-featured-downloads' ) ) || is_tax( 'hs-docs-category' ) ) {
 			remove_action( 'kadence_top_footer', 'Kadence\top_footer' );
 		}
 	}
@@ -236,6 +318,49 @@ class Theme {
 	 */
 	public function modify_yoast_breadcrumb_output( $output ) {
 		return '<nav aria-label="Breadcrumb" class="text-xs leading-none mt-4 lg:mt-6 mb-8 lg:mb-12" vocab="https://schema.org/" typeof="BreadcrumbList">' . $output . '</nav>';
+	}
+
+	/**
+	 * Load all posts if this is our Documentation page.
+	 *
+	 * @param $query
+	 *
+	 * @return mixed
+	 */
+	public function maybe_load_all_posts( $query ) {
+		if ( ( $query->is_post_type_archive( 'hs-docs-article' ) || is_tax( 'hs-docs-category' ) ) && ! is_admin() && $query->is_main_query() ) {
+			global $wpdb;
+
+			// Run the custom SQL query
+			$sql       = "SELECT p.* FROM {$wpdb->posts} AS p
+                    INNER JOIN {$wpdb->term_relationships} AS r ON p.ID = r.object_id
+                    INNER JOIN {$wpdb->term_taxonomy} AS tt ON r.term_taxonomy_id = tt.term_taxonomy_id
+                    INNER JOIN {$wpdb->terms} AS t ON t.term_id = tt.term_id
+                    WHERE tt.taxonomy = %s
+                    AND p.post_status = 'publish'
+                    AND p.post_type = %s
+                    ORDER BY t.name ASC";
+			$taxonomy  = 'hs-docs-category';
+			$post_type = 'hs-docs-article';
+
+			// Fetch posts based on the SQL query
+			$posts    = $wpdb->get_results( $wpdb->prepare( $sql, $taxonomy, $post_type ) );
+			$post_ids = wp_list_pluck( $posts, 'ID' );
+
+			$query->set( 'post__in', $post_ids );
+			$query->set( 'orderby', 'post__in' );
+			$query->set( 'posts_per_page', - 1 );
+		}
+
+		return $query;
+	}
+
+	public function maybe_disable_template_element( $template, $item ) {
+		if ( $item === 'title' && ( is_post_type_archive( 'hs-docs-article' ) || is_tax( 'hs-docs-category' ) ) ) {
+			return '';
+		}
+
+		return $template;
 	}
 
 	/**

@@ -1,3 +1,20 @@
 .widget-area .widget-title {
     text-transform: none;
 }
+
+
+.widget > h3.docs-sidebar {
+    @apply !-mb-4;
+}
+
+.post-type-archive-hs-docs-article,
+.tax-hs-docs-category,
+.single-hs-docs-article {
+    .sidebar-inner-wrap {
+        @apply p-4 lg:p-6 rounded-lg lg:rounded-xl bg-white border-t-4 border-primary-500 shadow-xl sticky top-4;
+
+        .widget-title {
+            @apply !font-brand !font-semibold !text-xl lg:!text-2xl !normal-case;
+        }
+    }
+}
