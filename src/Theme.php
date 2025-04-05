@@ -208,9 +208,11 @@ class Theme {
             <div class="daandev-menu ml-6 flex items-center gap-2 md:gap-4">
                 <ul id="daan-dev-menu" class="menu daan-dev-account">
                     <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item--has-toggle">
-                        <svg class="fill-current w-[1em] h-[1em] block text-xl" viewBox="0 0 448 512">
-                            <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512l388.6 0c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304l-91.4 0z"></path>
-                        </svg>
+                        <a href="<?php echo is_user_logged_in() ? '' : home_url( 'account' ); ?>" class="menu-link">
+                            <svg class="fill-current w-[1em] h-[1em] block text-xl" viewBox="0 0 448 512">
+                                <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512l388.6 0c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304l-91.4 0z"></path>
+                            </svg>
+                        </a>
 						<?php if ( is_user_logged_in() ) : ?>
 							<?php
 							wp_nav_menu(
