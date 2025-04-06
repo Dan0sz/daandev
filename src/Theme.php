@@ -169,7 +169,10 @@ class Theme {
 	 */
 	public function maybe_change_header() {
 		remove_action( 'kadence_primary_navigation', 'Kadence\primary_navigation' );
-		add_action( 'kadence_primary_navigation', [ $this, 'primary_navigation' ] );
+
+		if ( ! edd_is_checkout() ) {
+			add_action( 'kadence_primary_navigation', [ $this, 'primary_navigation' ] );
+		}
 
 		if ( edd_is_checkout() ) {
 			remove_action( 'kadence_secondary_navigation', 'Kadence\secondary_navigation' );
