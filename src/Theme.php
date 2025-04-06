@@ -169,9 +169,11 @@ class Theme {
 	 */
 	public function maybe_change_header() {
 		remove_action( 'kadence_primary_navigation', 'Kadence\primary_navigation' );
+		remove_action( 'kadence_mobile_navigation', 'Kadence\mobile_navigation' );
 
 		if ( ! edd_is_checkout() ) {
 			add_action( 'kadence_primary_navigation', [ $this, 'primary_navigation' ] );
+			add_action( 'kadence_mobile_navigation', [ $this, 'mobile_navigation' ] );
 		}
 
 		if ( edd_is_checkout() ) {
@@ -211,7 +213,7 @@ class Theme {
             <div class="daandev-menu ml-6 flex items-center gap-2 md:gap-4">
                 <ul id="daan-dev-menu" class="menu daan-dev-account">
                     <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item--has-toggle">
-                        <a href="<?php echo is_user_logged_in() ? '#' : home_url( 'account' ); ?>" class="menu-link">
+                        <a href="<?php echo home_url( 'account' ); ?>" class="menu-link">
                             <svg class="fill-current w-[1em] h-[1em] block text-xl" viewBox="0 0 448 512">
                                 <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512l388.6 0c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304l-91.4 0z"></path>
                             </svg>
@@ -239,6 +241,78 @@ class Theme {
                             </svg>
                             <div class="<?php echo edd_get_cart_contents() ? '' :
 								'hidden'; ?> absolute rounded-full text-white bg-primary-500 w-3.5 h-3.5 flex items-center justify-center text-xs right-0 top-1">
+                                <span class="cart-count"><?php echo edd_get_cart_quantity(); ?></span>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav><!-- #site-navigation -->
+		<?php
+	}
+
+	/**
+	 * Mobile Navigation
+	 */
+	public function mobile_navigation() {
+		?>
+        <nav id="mobile-site-navigation" class="mobile-navigation drawer-navigation drawer-navigation-parent-toggle-<?php echo esc_attr(
+			kadence()->option( 'mobile_navigation_parent_toggle' ) ? 'true' : 'false'
+		); ?>" role="navigation" aria-label="<?php esc_attr_e( 'Primary Mobile Navigation', 'kadence' ); ?>">
+			<?php kadence()->customizer_quick_link(); ?>
+            <div class="mobile-menu-container drawer-menu-container">
+				<?php
+				if ( kadence()->is_mobile_nav_menu_active() ) {
+					kadence()->display_mobile_nav_menu( [ 'menu_id' => 'mobile-menu', 'menu_class' => ( kadence()->option( 'mobile_navigation_collapse' ) ? 'menu has-collapse-sub-nav' : 'menu' ) ] );
+				} elseif ( kadence()->is_primary_nav_menu_active() ) {
+					kadence()->display_primary_nav_menu(
+						[
+							'menu_id'      => 'mobile-menu',
+							'menu_class'   => ( kadence()->option( 'mobile_navigation_collapse' ) ? 'menu has-collapse-sub-nav' : 'menu' ),
+							'show_toggles' => ( kadence()->option( 'mobile_navigation_collapse' ) ? true : false ),
+							'sub_arrows'   => false,
+							'mega_support' => apply_filters( 'kadence_mobile_allow_mega_support', true ),
+						]
+					);
+				} else {
+					kadence()->display_fallback_menu();
+				}
+				?>
+            </div>
+            <div class="mobile-menu-container drawer-menu-container">
+                <ul id="daan-dev-mobile-menu" class="menu daan-dev-account has-collapse-sub-nav">
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-account-mobile-menu">
+                        <div class="drawer-nav-drop-wrap">
+                            <a href="<?php echo home_url( 'account' ); ?>" class="menu-link">
+								<?php echo __( 'Account', 'daandev' ); ?>
+                            </a>
+                            <button class="drawer-sub-toggle" data-toggle-duration="10" data-toggle-target="#daan-dev-mobile-menu .menu-item-account-mobile-menu > .sub-menu" aria-expanded="false">
+                                <span class="screen-reader-text">Toggle child menu</span>
+                                <span class="kadence-svg-iconset">
+                                    <svg aria-hidden="true" class="kadence-svg-icon kadence-arrow-down-svg" fill="currentColor" version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><title>Expand</title><path d="M5.293 9.707l6 6c0.391 0.391 1.024 0.391 1.414 0l6-6c0.391-0.391 0.391-1.024 0-1.414s-1.024-0.391-1.414 0l-5.293 5.293-5.293-5.293c-0.391-0.391-1.024-0.391-1.414 0s-0.391 1.024 0 1.414z"></path></svg>
+                                </span>
+                            </button>
+                        </div>
+						<?php if ( is_user_logged_in() ) : ?>
+							<?php
+							wp_nav_menu(
+								[
+									'theme_location'  => 'daan-account-menu',
+									'menu_class'      => 'sub-menu',
+									'menu_id'         => 'daan-dev-account-mobile-menu',
+									'container_class' => 'daan-dev-account-menu',
+									'container'       => 'ul',
+									'mega_support'    => true,
+									'addon_support'   => true,
+								]
+							);
+							?>
+						<?php endif; ?>
+                    </li>
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page">
+                        <a class="relative" href="<?php echo edd_get_cart_contents() ? edd_get_checkout_uri() : '#'; ?>">
+							<?php echo __( 'Cart', 'daandev' ); ?>
+                            <div class="<?php echo edd_get_cart_contents() ? '' : 'hidden'; ?> inline-block text-center rounded-full text-white bg-primary-500 w-3.5 h-3.5 text-xs">
                                 <span class="cart-count"><?php echo edd_get_cart_quantity(); ?></span>
                             </div>
                         </a>
