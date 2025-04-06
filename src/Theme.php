@@ -188,9 +188,6 @@ class Theme {
 	 * @return void
 	 */
 	public function primary_navigation() {
-		/**
-		 * Desktop Navigation
-		 */
 		$openType = get_theme_mod( 'primary_navigation_open_type' );
 		?>
         <nav id="site-navigation" class="main-navigation header-navigation <?php echo $openType == 'click' ? 'click-to-open' : 'hover-to-open'; ?> nav--toggle-sub header-navigation-style-<?php echo esc_attr(
@@ -252,7 +249,7 @@ class Theme {
 	}
 
 	/**
-	 * Mobile Navigation
+	 * Mobile Navigation, copied from @see Kadence\mobile_navigation and modified.
 	 */
 	public function mobile_navigation() {
 		?>
