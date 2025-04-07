@@ -42,6 +42,11 @@ class Theme {
 		remove_action( 'edd_after_download_content', 'edd_append_purchase_link' );
 
 		/**
+		 * Add copy after Buy Now button.
+		 */
+		add_action( 'edd_purchase_link_end', [ $this, 'add_microcopy' ], 9 );
+
+		/**
 		 * Move and modify EDD Reviews
 		 */
 		remove_filter( 'the_content', [ edd_reviews(), 'load_frontend' ] );
@@ -81,7 +86,6 @@ class Theme {
 		 * Template hooks
 		 */
 		add_action( 'kadence_hero_header', [ $this, 'maybe_add_download_hero_header' ] );
-
 	}
 
 	/**
@@ -459,5 +463,26 @@ class Theme {
 		if ( is_singular( get_post_type() ) && get_post_type() === 'download' ) {
 			get_template_part( 'template-parts/content/download_hero' );
 		}
+	}
+
+	public function add_microcopy() {
+		?>
+        <div class="grid grid-cols-1 gap-1.5">
+            <div class="inline-flex items-center gap-1">
+                <svg class="fill-current w-[1em] h-[1em] text-secondary-500" viewBox="0 0 512 512">
+                    <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"></path>
+                </svg>
+                <span><?php echo __( '14 day money back guarantee' ); ?></span>
+            </div>
+            <div>
+                Find answers to all your
+                <a href="<?php echo esc_html(
+					home_url( 'docs/pre-sales/' )
+				); ?>" class="font-brand font-semibold transition disabled:opacity-50 focus:outline-none text-center editor-noclick !text-primary-500 border-transparent text-base border-b">
+                    pre-sale questions
+                </a>
+            </div>
+        </div>
+		<?php
 	}
 }
