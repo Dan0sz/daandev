@@ -1,4 +1,4 @@
-.edd-table, #edd_user_history {
+.edd-table, #edd_user_history, #edd_subscription_receipt, #edd_purchase_receipt {
     thead {
         tr {
             th {
@@ -11,6 +11,10 @@
         tr {
             td {
                 @apply pb-2 pt-2;
+
+                strong {
+                    @apply !font-semibold;
+                }
             }
         }
     }

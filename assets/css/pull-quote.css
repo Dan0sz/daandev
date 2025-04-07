@@ -20,7 +20,7 @@
         }
 
         .wp-block-pullquote {
-            @apply text-left;
+            @apply text-left py-8;
 
             blockquote {
                 @apply p-0 relative;

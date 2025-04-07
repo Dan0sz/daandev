@@ -209,6 +209,10 @@
 
                 #edd-card-vat-wrap {
                     @apply order-last md:col-span-2;
+
+                    #edd-vat-check-result {
+
+                    }
                 }
             }
 
@@ -290,6 +294,18 @@
 
                 .edd-vat-check-button {
                     @apply shrink-0 ml-0 font-brand font-semibold transition disabled:opacity-50 focus:outline-none text-center bg-primary-500 hover:bg-primary-600 text-white inline-block rounded-lg text-base py-2 px-4 shadow-lg;
+                }
+            }
+
+            #edd-vat-check-result {
+                @apply mb-6 text-neutral-900 rounded-md border-t-4 md:border-l-4 md:border-t-0 p-4 md:p-8 flex flex-col md:flex-row;
+
+                &.edd-vat-check-success {
+                    @apply bg-success-100 border-success-500;
+                }
+
+                &.edd-vat-check-error {
+                    @apply bg-error-100 border-error-500;
                 }
             }
         }
