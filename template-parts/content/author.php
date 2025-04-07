@@ -21,7 +21,7 @@ if ( empty( $testimonial_title ) ) {
 
 if ( empty( $testimonial ) ) {
 	$testimonial = __(
-		'Performance and UX are key when I craft a plugin. I create my plugins with care and always bring something new to the table. Reinventing the wheel isn\'t my style. I offer friendly, human support and there\'s never been a support ticket I wasn\'t able to resolve.',
+		'Performance and UX are key when I craft my plugins. I create my plugins with care and always bring something new to the table. Reinventing the wheel isn\'t my style. I take pride in my friendly, no-nonsense support. That\'s why there\'s never been a support ticket I wasn\'t able to resolve!',
 		'daandev'
 	);
 }
