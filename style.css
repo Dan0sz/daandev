@@ -15,6 +15,8 @@ Template: kadence
 @import "./assets/css/buttons.css";
 @import "./assets/css/checkout.css";
 @import "./assets/css/cover.css";
+@import "./assets/css/edd-form.css";
+@import "./assets/css/edd-table.css";
 @import "./assets/css/edd.min.css";
 @import "./assets/css/edd-add-to-cart.css";
 @import "./assets/css/edd-reviews.css";

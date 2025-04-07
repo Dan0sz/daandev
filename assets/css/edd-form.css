@@ -1,0 +1,40 @@
+/**
+ * EDD Forms
+ */
+.edd_form {
+    fieldset {
+        legend {
+            @apply text-lg mb-2;
+        }
+
+        p {
+            @apply flex;
+
+            label {
+                @apply self-center mr-4 font-semibold grow-0 shrink-0 basis-3xs;
+            }
+
+            input, select {
+                @apply grow;
+            }
+        }
+    }
+}
+
+.wp-block-edd-user-downloads {
+    @apply !border-0 !p-0 mb-4;
+
+    .edd-order-items__header {
+        @apply border-b-0 text-lg;
+
+        .edd-blocks__row-label--files {
+            @apply !text-left;
+        }
+    }
+
+    .edd-order-item__product {
+        .edd-blocks__row-column--files {
+            @apply !text-left;
+        }
+    }
+}

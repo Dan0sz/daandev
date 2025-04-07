@@ -1,0 +1,18 @@
+.edd-table, #edd_user_history {
+    thead {
+        tr {
+            th {
+                @apply text-left text-lg;
+            }
+        }
+    }
+
+    tbody {
+        tr {
+            td {
+                @apply pb-2 pt-2;
+            }
+        }
+    }
+}
+
