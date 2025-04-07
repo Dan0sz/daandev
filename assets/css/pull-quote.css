@@ -3,33 +3,37 @@
  */
 .daan-dev-quote {
     @apply py-4 lg:py-8 text-black dark:text-white rounded lg:rounded-lg text-center px-10 lg:px-28;
-}
 
-.daan-dev-quote blockquote {
-    font-family: Poppins, sans-serif;
-    border-left: 0;
-}
+    .wp-block-column.is-vertically-aligned-center {
+        align-self: last baseline;
+    }
 
-.daan-dev-quote blockquote .wp-block-pullquote {
-    text-align: left;
-}
+    blockquote {
+        @apply font-brand border-l-0;
 
-.daan-dev-quote blockquote .wp-block-pullquote blockquote {
-    padding: 0;
-}
+        cite {
+            @apply transform-none;
+        }
 
-.daan-dev-quote blockquote .wp-block-pullquote blockquote:before {
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 350px;
-    top: 100px;
-    left: -60px;
-}
+        p {
+            @apply font-normal not-italic;
+        }
 
-.daan-dev-quote blockquote p {
-    font-style: normal;
-    font-weight: 400;
-}
+        .wp-block-pullquote {
+            @apply text-left;
 
-.daan-dev-quote blockquote cite {
-    text-transform: none;
+            blockquote {
+                @apply p-0 relative;
+
+                &:before {
+                    content: '';
+                    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath fill='%23cef8ff' d='M0 216C0 149.7 53.7 96 120 96l8 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-8 0c-30.9 0-56 25.1-56 56l0 8 64 0c35.3 0 64 28.7 64 64l0 64c0 35.3-28.7 64-64 64l-64 0c-35.3 0-64-28.7-64-64l0-32 0-32 0-72zm256 0c0-66.3 53.7-120 120-120l8 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-8 0c-30.9 0-56 25.1-56 56l0 8 64 0c35.3 0 64 28.7 64 64l0 64c0 35.3-28.7 64-64 64l-64 0c-35.3 0-64-28.7-64-64l0-32 0-32 0-72z'%3E%3C/path%3E%3C/svg%3E");
+                    height: 100px;
+                    width: 88px;
+
+                    @apply absolute -top-6 -left-8;
+                }
+            }
+        }
+    }
 }
