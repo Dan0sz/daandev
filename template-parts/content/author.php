@@ -8,7 +8,7 @@ $testimonial_title = get_post_meta( get_the_ID(), '_edd_featured_download_testim
 $testimonial       = get_post_meta( get_the_ID(), '_edd_featured_download_testimonial', true );
 
 if ( empty( $author ) ) {
-	$author = get_the_author_meta( 'display_name' ) . '<span class="font-normal">' . ' - ' . __( 'Fixing the internet, since 2010.', 'daandev' ) . '</span>';
+	$author = get_the_author_meta( 'display_name' ) . '<span class="font-normal">' . ' – ' . __( 'Founder of Daan.dev.', 'daandev' ) . '</span>';
 }
 
 if ( empty( $author_image ) ) {
@@ -21,7 +21,7 @@ if ( empty( $testimonial_title ) ) {
 
 if ( empty( $testimonial ) ) {
 	$testimonial = __(
-		'Performance and UX are key when I craft my plugins. I create my plugins with care and always bring something new to the table. Reinventing the wheel isn\'t my style. I take pride in my friendly, no-nonsense support. That\'s why there\'s never been a support ticket I wasn\'t able to resolve!',
+		'Performance and UX are key when I craft my plugins. I create my plugins with care and always bring something new to the table. Reinventing the wheel isn\'t my style. I offer friendly, no-nonsense support and take pride in the fact that there\'s never been a support ticket I wasn\'t able to resolve!',
 		'daandev'
 	);
 }
