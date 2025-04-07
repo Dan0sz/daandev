@@ -38,7 +38,7 @@
                         </svg>
                         <div class="flex-grow">
                             <div class="mb-0.5 lg:mb-1 font-brand font-semibold text-lg lg:text-xl text-black">
-								<?php echo __( 'Easy upgrading of your license', 'daandev' ); ?>
+								<?php echo __( 'Easy license upgrades', 'daandev' ); ?>
                             </div>
                         </div>
                     </div>
@@ -50,7 +50,7 @@
                         </svg>
                         <div class="flex-grow">
                             <div class="mb-0.5 lg:mb-1 font-brand font-semibold text-lg lg:text-xl text-black">
-								<?php echo __( 'Unlimited activation for dev environments', 'daandev' ); ?>
+								<?php echo __( 'Unlimited activations for dev environments', 'daandev' ); ?>
                             </div>
                         </div>
                     </div>
