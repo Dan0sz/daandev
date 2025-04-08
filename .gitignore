@@ -1,5 +1,4 @@
 /node_modules
-/assets/css/output.css
 
 vendor/*
 !vendor/composer/
