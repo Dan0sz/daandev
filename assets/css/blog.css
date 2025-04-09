@@ -83,6 +83,8 @@
 
 
 nav.navigation.pagination {
+    @apply text-center;
+
     .nav-links {
         .next.page-numbers {
             @apply relative;

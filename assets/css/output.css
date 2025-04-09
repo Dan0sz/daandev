@@ -1317,6 +1317,7 @@
   }
 }
 nav.navigation.pagination {
+  text-align: center;
   .nav-links {
     .next.page-numbers {
       position: relative;
