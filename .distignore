@@ -16,5 +16,5 @@ package-lock.json
 postcss.config.mjs
 readme.md
 
-/css
-!/css/output.css
+/assets/css
+!/assets/css/output.css
