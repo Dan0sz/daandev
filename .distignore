@@ -1,3 +1,4 @@
+/assets/src/css
 /.wordpress-org
 /.git
 /.github
@@ -15,6 +16,3 @@ package.json
 package-lock.json
 postcss.config.mjs
 readme.md
-
-/assets/css
-!/assets/css/output.css

@@ -1,3 +1,6 @@
+# We don't do CSS minification in this project.
+style.min.css
+/assets/src/css/*.min.css
 /node_modules
 
 vendor/*
