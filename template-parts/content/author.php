@@ -2,6 +2,7 @@
 /**
  * A testimonial template, this uses @package daan/featured-downloads-branding's Testimonial options to display the messages.
  */
+$plugin_name       = get_the_title();
 $author            = get_post_meta( get_the_ID(), '_edd_featured_download_author', true );
 $author_image      = get_post_meta( get_the_ID(), '_edd_featured_download_author_image', true );
 $testimonial_title = get_post_meta( get_the_ID(), '_edd_featured_download_testimonial_title', true );
@@ -16,13 +17,16 @@ if ( empty( $author_image ) ) {
 }
 
 if ( empty( $testimonial_title ) ) {
-	$testimonial_title = sprintf( __( 'Hi there! 👋 I\'m %s; the plugin\'s creator.', 'daandev' ), get_the_author_meta( 'first_name' ) );
+	$testimonial_title = sprintf( __( 'Hi there! 👋 I\'m %s; the creator of %s.', 'daandev' ), get_the_author_meta( 'first_name' ), $plugin_name );
 }
 
 if ( empty( $testimonial ) ) {
-	$testimonial = __(
-		'Performance and UX are key when I craft my plugins. I create my plugins with care and always bring something new to the table. Reinventing the wheel isn\'t my style. I offer friendly, no-nonsense support and take pride in the fact that there\'s never been a support ticket I wasn\'t able to resolve!',
-		'daandev'
+	$testimonial = sprintf(
+		__(
+			'Performance and UX are key when I craft my plugins. I created %s with care and wanted to bring something new to the table, because reinventing the wheel isn\'t my style. I offer friendly, no-nonsense support and take pride in the fact that there\'s never been a support ticket I wasn\'t able to resolve!',
+			'daandev'
+		),
+		$plugin_name
 	);
 }
 
