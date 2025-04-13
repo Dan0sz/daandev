@@ -3,8 +3,10 @@
  */
 #main {
     #archive-container {
+        @apply block md:grid;
+
         article {
-            @apply shadow-lg bg-white rounded-xl flex flex-col overflow-hidden mb-8 lg:mb-0 block;
+            @apply shadow-lg bg-white rounded-xl block md:flex md:flex-col overflow-hidden mb-4 lg:mb-0;
 
             .post-thumbnail {
                 @apply shrink-0 !rounded-none rounded lg:rounded-lg mb-0 pb-[62.5%] overflow-hidden;
@@ -52,7 +54,7 @@
         }
 
         &.hs-docs-article-archive {
-            @apply grid-cols-2 gap-y-4 mb-12;
+            @apply grid-cols-1 md:grid-cols-2 gap-y-4 mb-12;
 
             article {
                 @apply shadow-none;
@@ -63,7 +65,7 @@
             }
 
             h2 {
-                @apply col-span-2 mt-12 text-2xl;
+                @apply col-span-2 mt-12 text-2xl sm:mb-4;
 
                 &:first-child {
                     @apply mt-0;

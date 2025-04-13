@@ -5,6 +5,7 @@
     "tailwindcss": "^4.0.17"
   },
   "scripts": {
-    "dev": "npx @tailwindcss/cli -i ./style.css -o ./assets/dist/css/output.css --watch"
+    "dev": "npx @tailwindcss/cli -i ./style.css -o ./assets/dist/css/output.css --watch --minify",
+    "prod": "npx @tailwindcss/cli -i ./style.css -o ./assets/dist/css/output.css --minify"
   }
 }

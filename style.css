@@ -11,22 +11,22 @@ Template: kadence
 */
 
 @import "tailwindcss";
-@import "./assets/css/blog.css";
-@import "./assets/css/buttons.css";
-@import "./assets/css/checkout.css";
-@import "./assets/css/cover.css";
-@import "./assets/css/edd-form.css";
-@import "./assets/css/edd-table.css";
-@import "./assets/css/edd.min.css";
-@import "./assets/css/edd-add-to-cart.css";
-@import "./assets/css/edd-reviews.css";
-@import "./assets/css/footer-mods.css";
-@import "./assets/css/global-mods.css";
-@import "./assets/css/header-mods.css";
-@import "./assets/css/pull-quote.css";
-@import "./assets/css/reviews.min.css";
-@import "./assets/css/view-changelog.css";
-@import "./assets/css/widgets.css";
+@import "./assets/src/css/blog.css";
+@import "./assets/src/css/buttons.css";
+@import "./assets/src/css/checkout.css";
+@import "./assets/src/css/cover.css";
+@import "./assets/src/css/edd-form.css";
+@import "./assets/src/css/edd-table.css";
+@import "./assets/src/css/edd.min.css";
+@import "./assets/src/css/edd-add-to-cart.css";
+@import "./assets/src/css/edd-reviews.css";
+@import "./assets/src/css/footer-mods.css";
+@import "./assets/src/css/global-mods.css";
+@import "./assets/src/css/header-mods.css";
+@import "./assets/src/css/pull-quote.css";
+@import "./assets/src/css/reviews.min.css";
+@import "./assets/src/css/view-changelog.css";
+@import "./assets/src/css/widgets.css";
 
 @theme inline {
     --font-brand: "Poppins", sans-serif;
