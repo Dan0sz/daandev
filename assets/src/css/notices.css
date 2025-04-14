@@ -1,0 +1,15 @@
+.notice {
+    @apply mb-6 text-neutral-900 rounded-md border-t-4 md:border-l-4 md:border-t-0 p-4 md:!px-8 md:!py-6 flex flex-col md:flex-row;
+
+    &.warning {
+        @apply border-warning-500 bg-warning-100;
+    }
+
+    &.info {
+        @apply border-primary-500 bg-primary-100;
+    }
+
+    &.error {
+        @apply border-error-500 bg-error-100;
+    }
+}

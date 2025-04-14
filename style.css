@@ -23,6 +23,7 @@ Template: kadence
 @import "./assets/src/css/footer-mods.css";
 @import "./assets/src/css/global-mods.css";
 @import "./assets/src/css/header-mods.css";
+@import "./assets/src/css/notices.css";
 @import "./assets/src/css/pull-quote.css";
 @import "./assets/src/css/reviews.min.css";
 @import "./assets/src/css/view-changelog.css";
