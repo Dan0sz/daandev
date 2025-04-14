@@ -172,7 +172,7 @@
                     @apply !grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4 lg:gap-6;
 
                     .edd-gateway-option {
-                        @apply justify-start p-3 lg:p-4 rounded-lg lg:rounded-xl border border-neutral-200 transition hover:bg-neutral-50 font-brand font-bold before:block before:w-5 before:h-5 before:top-4 before:left-3 before:lg:top-5 before:lg:left-4 before:content-[var(--icon-circle-outline)] after:block after:grow after:h-full after:lg:h-8 after:bg-no-repeat after:bg-right after:bg-contain;
+                        @apply justify-start p-3 lg:p-4 rounded-lg lg:rounded-xl border border-neutral-200 transition hover:bg-neutral-50 font-brand font-semibold before:block before:w-5 before:h-5 before:top-4 before:left-3 before:lg:top-5 before:lg:left-4 before:content-[var(--icon-circle-outline)] after:block after:grow after:h-full after:lg:h-8 after:bg-no-repeat after:bg-right after:bg-contain;
 
                         &.edd-gateway-option-selected {
                             @apply bg-primary-50 border-primary-500 before:content-[var(--icon-circle-check)];
