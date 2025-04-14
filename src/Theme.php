@@ -24,6 +24,11 @@ class Theme {
 	 * @return void
 	 */
 	private function init() {
+		// None of this is needed in the admin.
+		if ( is_admin() ) {
+			return;
+		}
+
 		/**
 		 * Scripts/styles
 		 */
