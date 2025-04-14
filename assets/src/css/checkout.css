@@ -316,7 +316,7 @@
                     @apply mb-6 text-neutral-900 rounded-md border-t-4 md:border-l-4 md:border-t-0 p-4 md:p-8 flex flex-col md:flex-row;
 
                     &.edd-vat-check-success {
-                        @apply bg-success-100 border-success-500;
+                        @apply hidden;
                     }
 
                     &.edd-vat-check-error {
@@ -426,7 +426,7 @@
     }
 
     .edd_cart_tax_row {
-        @apply order-4;
+        @apply hidden;
     }
 
     .edd_cart_fee {
