@@ -31,5 +31,5 @@
 }
 
 .wp-block-verse {
-    @apply mb-6 text-neutral-900 rounded-md border-t-4 md:border-l-4 border-primary-500 bg-primary-100 text-xl font-serif md:border-t-0 p-4 md:!px-8 md:!py-6 flex flex-col md:flex-row;
+    @apply mb-6 text-neutral-900 rounded-md border-t-4 md:border-l-4 border-primary-500 !bg-primary-100 text-xl font-serif md:border-t-0 p-4 md:!px-8 md:!py-6 flex flex-col md:flex-row;
 }
