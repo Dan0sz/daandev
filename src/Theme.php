@@ -85,7 +85,6 @@ class Theme {
 		/**
 		 * Disable WP Help Scout Docs' default template, so we can use our own archive template.
 		 */
-		add_filter( 'wp_help_scout_docs_add_rewrite_rule', '__return_false' );
 		add_action( 'pre_get_posts', [ $this, 'maybe_load_all_posts' ] );
 		add_filter( 'kadence_title_elements_template_path', [ $this, 'maybe_disable_template_element' ], 10, 2 );
 
