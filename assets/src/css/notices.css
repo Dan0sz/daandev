@@ -1,19 +1,35 @@
 .notice {
-    @apply mb-6 text-neutral-900 rounded-md border-t-4 md:border-l-4 md:border-t-0 p-4 md:!px-8 md:!py-6 flex flex-col md:flex-row;
+    @apply relative mb-6 text-neutral-900 rounded-md border-t-4 md:border-l-4 md:border-t-0 p-4 md:!px-8 md:!pl-20 md:!py-6;
+
+    &::before {
+        @apply hidden md:block absolute top-1/2 -translate-y-1/2 md:left-4 float-left mr-8 px-5 py-1.5 italic font-serif text-3xl rounded-full bg-white;
+    }
 
     &.warning {
         @apply border-warning-500 bg-warning-100;
+
+        &::before {
+            @apply content-['!'] text-warning-500 not-italic;
+        }
     }
 
     &.info {
         @apply border-primary-500 bg-primary-100;
+
+        &::before {
+            @apply content-['i'] text-primary-500;
+        }
     }
 
     &.error {
         @apply border-error-500 bg-error-100;
+
+        &::before {
+            @apply content-['x'] text-error-500 not-italic;
+        }
     }
 }
 
 .wp-block-verse {
-    @apply mb-6 text-neutral-900 rounded-md border-t-4 md:border-l-4 border-primary-500 bg-primary-100 text-2xl font-serif md:border-t-0 p-4 md:!px-8 md:!py-6 flex flex-col md:flex-row;
+    @apply mb-6 text-neutral-900 rounded-md border-t-4 md:border-l-4 border-primary-500 bg-primary-100 text-xl font-serif md:border-t-0 p-4 md:!px-8 md:!py-6 flex flex-col md:flex-row;
 }
