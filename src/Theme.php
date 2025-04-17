@@ -424,7 +424,7 @@ class Theme {
 	 * @return mixed
 	 */
 	public function maybe_load_all_posts( $query ) {
-		if ( ( $query->is_post_type_archive( 'hs-docs-article' ) || is_tax( 'hs-docs-category' ) ) && ! is_admin() && $query->is_main_query() ) {
+		if ( ( $query->is_post_type_archive( 'hs-docs-article' ) || is_tax( 'hs-docs-category' ) || is_search() ) && ! is_admin() && $query->is_main_query() ) {
 			global $wpdb;
 
 			// Run the custom SQL query

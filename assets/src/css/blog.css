@@ -8,10 +8,23 @@
 }
 
 /**
+ * Fix for empty p tags in TOCs
+ */
+.wp-help-scout-docs-toc {
+    > ul {
+        > li {
+            p {
+                @apply hidden;
+            }
+        }
+    }
+}
+
+/**
  * Blog archive and posts
  */
 #main {
-    #archive-container:not(.search-archive) {
+    #archive-container {
         @apply block md:grid;
 
         article {
@@ -62,7 +75,7 @@
             }
         }
 
-        &.hs-docs-article-archive {
+        &.hs-docs-article-archive, &.search-archive {
             @apply grid-cols-1 md:grid-cols-2 gap-y-4 mb-12;
 
             article {

@@ -42,7 +42,7 @@ do_action( 'kadence_hero_header' );
 							$category      = $categories[ 0 ];
 							$category_name = $category->name;
 
-							if ( ! is_search() && $category_name !== $last_category_name ) {
+							if ( $category_name !== $last_category_name ) {
 								echo '<h2 class="archive-category-title">' . esc_html( $category_name ) . '</h2>';
 								$last_category_name = $category_name;
 							}
