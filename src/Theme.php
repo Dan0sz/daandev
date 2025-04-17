@@ -337,7 +337,6 @@ class Theme {
 	 */
 	public function maybe_change_footer() {
 		if ( edd_is_checkout() ) {
-			//			remove_action( 'kadence_top_footer', 'Kadence\top_footer' );
 			remove_action( 'kadence_middle_footer', 'Kadence\middle_footer' );
 			add_action( 'kadence_middle_footer', [ $this, 'show_checkout_footer' ] );
 		}
@@ -352,7 +351,7 @@ class Theme {
 			$content = $post->post_content;
 		}
 
-		if ( ( ! is_front_page() && ! $is_download && $content && ! has_shortcode( $content, 'daan-featured-downloads' ) ) || is_tax( 'hs-docs-category' ) ) {
+		if ( ( ! is_front_page() && ! $is_download && $content && ! has_shortcode( $content, 'daan-featured-downloads' ) ) || is_tax( 'hs-docs-category' ) || is_search() ) {
 			remove_action( 'kadence_top_footer', 'Kadence\top_footer' );
 		}
 	}
