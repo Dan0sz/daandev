@@ -1,4 +1,13 @@
 /**
+ * Fix for bottom marging for search results.
+ */
+.search-results {
+    #inner-wrap {
+        @apply mb-12;
+    }
+}
+
+/**
  * Blog archive and posts
  */
 #main {
