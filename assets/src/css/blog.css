@@ -2,7 +2,7 @@
  * Blog archive and posts
  */
 #main {
-    #archive-container {
+    #archive-container:not(.search-archive) {
         @apply block md:grid;
 
         article {
@@ -80,6 +80,10 @@
 
     .content-wrap {
         @apply mb-8;
+
+        &.search-archive.grid-cols {
+            @apply gap-y-2;
+        }
     }
 }
 
