@@ -1,5 +1,5 @@
 .notice {
-    @apply relative -mx-6 mb-6 text-neutral-900 rounded-md border-t-4 md:border-l-4 md:border-t-0 !p-4 md:!px-8 md:!pl-20 md:!py-6;
+    @apply relative !-mx-6 mb-6 text-neutral-900 rounded-md border-t-4 md:border-l-4 md:border-t-0 !p-4 md:!px-8 md:!pl-20 md:!py-6;
 
     &::before {
         @apply hidden md:block absolute top-1/2 -translate-y-1/2 md:left-4 float-left mr-8 px-5 py-1.5 italic font-serif text-3xl rounded-full bg-white;
