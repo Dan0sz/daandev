@@ -8,7 +8,7 @@
         }
 
         p {
-            @apply flex;
+            @apply grid md:flex;
 
             label {
                 @apply self-center mr-4 font-semibold grow-0 shrink-0 basis-3xs;
