@@ -20,6 +20,10 @@
     }
 }
 
+.wp-help-scout-docs-toc {
+    @apply mb-6;
+}
+
 /**
  * Blog archive and posts
  */
