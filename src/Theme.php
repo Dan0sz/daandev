@@ -33,6 +33,7 @@ class Theme {
 		 * Scripts/styles
 		 */
 		add_action( 'wp_enqueue_scripts', [ $this, 'daandev_enqueue_scripts' ], 15 );
+		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_dashicons' ] );
 
 		/**
 		 * Modify blocks output
@@ -109,6 +110,13 @@ class Theme {
 
 		// Tailwind CSS compiled file
 		wp_enqueue_style( 'daan-dev-tailwind', get_stylesheet_directory_uri() . '/assets/dist/css/output.css', [ 'kadence-theme' ], $file_modified );
+	}
+
+	/**
+	 * @return void
+	 */
+	public function enqueue_dashicons() {
+		wp_enqueue_style( 'dashicons' );
 	}
 
 	/**
