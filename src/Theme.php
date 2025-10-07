@@ -24,6 +24,11 @@ class Theme {
 	 * @return void
 	 */
 	private function init() {
+		/**
+		 * Add Account Menu
+		 */
+		add_action( 'init', [ $this, 'add_account_menu' ] );
+
 		// None of this is needed in the admin.
 		if ( is_admin() ) {
 			return;
@@ -71,11 +76,6 @@ class Theme {
 		 */
 		add_action( 'init', [ $this, 'add_reviews_shortcode' ], 11 );
 		add_action( 'init', [ $this, 'add_featured_downloads_shortcode' ], 11 );
-
-		/**
-		 * Add Account Menu
-		 */
-		add_action( 'init', [ $this, 'add_account_menu' ] );
 
 		/**
 		 * Modify the Header/Footer in checkout.
