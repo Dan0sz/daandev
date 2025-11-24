@@ -189,6 +189,11 @@ class Theme {
 		remove_action( 'kadence_primary_navigation', 'Kadence\primary_navigation' );
 		remove_action( 'kadence_mobile_navigation', 'Kadence\mobile_navigation' );
 
+		// This doesn't really fix anything, aside from PHP error logging spam when people request invalid/not allowed URLs.
+		if ( ! function_exists( 'edd_is_checkout' ) ) {
+			return;
+		}
+
 		if ( ! edd_is_checkout() ) {
 			add_action( 'kadence_primary_navigation', [ $this, 'primary_navigation' ] );
 			add_action( 'kadence_mobile_navigation', [ $this, 'mobile_navigation' ] );
