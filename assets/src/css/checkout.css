@@ -54,7 +54,7 @@
 
     .edd-blocks-form__cart,
     .edd-blocks-form__purchase {
-        @apply p-4 lg:p-6 rounded-lg lg:rounded-xl bg-white !border-solid border-0 border-t-4 border-primary-500 shadow-xl;
+        @apply lg:col-start-3 p-4 lg:p-6 rounded-lg lg:rounded-xl bg-white !border-solid border-0 border-t-4 border-primary-500 shadow-xl;
     }
 
     .edd-blocks-form__cart {
