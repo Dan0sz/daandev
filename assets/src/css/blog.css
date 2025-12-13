@@ -24,6 +24,10 @@
     @apply mb-6;
 }
 
+.entry-content {
+    @apply break-normal;
+}
+
 /**
  * Blog archive and posts
  */

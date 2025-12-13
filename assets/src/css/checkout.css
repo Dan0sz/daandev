@@ -195,6 +195,10 @@
             #edd_cc_address {
                 @apply mb-6;
 
+                > div {
+                    @apply col-span-1;
+                }
+
                 #edd-card-address-wrap {
                     @apply order-1;
                 }
@@ -281,7 +285,7 @@
                 @apply hidden;
             }
 
-            #edd-email-wrap {
+            #edd-edd_email-wrap {
                 @apply md:col-span-2;
 
                 .edd-truemail-message {
@@ -294,7 +298,7 @@
             }
 
             #edd-card-vat-wrap {
-                @apply order-last md:col-span-2;
+                @apply order-last md:!col-span-2;
 
                 .edd-vat-number-wrap {
                     @apply flex gap-2 w-full;
@@ -313,7 +317,7 @@
                 }
 
                 #edd-vat-check-result {
-                    @apply mb-6 text-neutral-900 rounded-md border-t-4 md:border-l-4 md:border-t-0 p-4 md:p-8 flex flex-col md:flex-row;
+                    @apply mb-6 mt-2 text-neutral-900 rounded-md border-t-4 md:border-l-4 md:border-t-0 p-4 md:p-8 flex flex-col md:flex-row;
 
                     &.edd-vat-check-success {
                         @apply hidden;
