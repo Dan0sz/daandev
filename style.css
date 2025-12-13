@@ -17,7 +17,7 @@ Template: kadence
 @import "./assets/src/css/cover.css";
 @import "./assets/src/css/edd-form.css";
 @import "./assets/src/css/edd-table.css";
-@import "./assets/src/css/edd.min.css";
+@import "./assets/src/css/edd.css";
 @import "./assets/src/css/edd-add-to-cart.css";
 @import "./assets/src/css/edd-reviews.css";
 @import "./assets/src/css/footer-mods.css";
@@ -25,7 +25,7 @@ Template: kadence
 @import "./assets/src/css/header-mods.css";
 @import "./assets/src/css/notices.css";
 @import "./assets/src/css/pull-quote.css";
-@import "./assets/src/css/reviews.min.css";
+@import "./assets/src/css/reviews.css";
 @import "./assets/src/css/view-changelog.css";
 @import "./assets/src/css/widgets.css";
 

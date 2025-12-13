@@ -38,3 +38,36 @@
         }
     }
 }
+
+/**
+ * EDD Recurring forms
+ */
+#edd-recurring-form {
+    fieldset {
+        div > span {
+            @apply hidden;
+        }
+
+        > p, > div {
+            @apply md:grid md:grid-cols-4 gap-2;
+
+            &.edd-description, label {
+                @apply col-start-1;
+            }
+
+            > span, > p {
+                &.edd-description {
+                    @apply col-start-2 col-span-3 row-start-2 text-xs;
+                }
+
+                &.exp-divider {
+                    @apply hidden;
+                }
+            }
+
+            input {
+                @apply col-start-2 col-span-2;
+            }
+        }
+    }
+}
