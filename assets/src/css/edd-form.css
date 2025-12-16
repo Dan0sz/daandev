@@ -71,3 +71,10 @@
         }
     }
 }
+
+/**
+ * Hide License Add Sites Form
+ */
+#edd_sl_license_add_site_form {
+    @apply hidden;
+}
