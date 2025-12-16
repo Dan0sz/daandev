@@ -150,12 +150,17 @@ nav.navigation.pagination {
     .splide__track {
         @apply pb-6;
 
-        .carousel-item {
-            @apply shadow-lg bg-white rounded-xl flex flex-col overflow-hidden mb-8 lg:mb-0 block;
+        .splide__list {
+            @apply h-auto;
 
-            .entry {
-                @apply shadow-none;
+            .carousel-item {
+                @apply shadow-lg bg-white rounded-xl flex flex-col overflow-hidden mb-8 lg:mb-0 block;
+
+                .entry {
+                    @apply shadow-none;
+                }
             }
         }
+
     }
 }
