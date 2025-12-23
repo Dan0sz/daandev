@@ -12,7 +12,7 @@
     #inner-wrap {
         @apply bg-primary-50;
 
-        main {
+        #main {
             @apply mt-16 mb-16;
         }
     }
