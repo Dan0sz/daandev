@@ -300,6 +300,10 @@
             #edd-card-vat-wrap {
                 @apply order-last md:!col-span-2;
 
+                .edd-vat-checkbox-wrap {
+                    @apply mb-0;
+                }
+
                 .edd-vat-number-wrap {
                     @apply flex gap-2 w-full;
 
