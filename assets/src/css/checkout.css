@@ -298,7 +298,7 @@
             }
 
             #edd-card-vat-wrap {
-                @apply order-last md:!col-span-2;
+                @apply order-last;
 
                 .edd-vat-checkbox-wrap {
                     @apply mb-0;
