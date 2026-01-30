@@ -288,7 +288,7 @@
             #edd-edd_email-wrap {
                 @apply md:col-span-2;
 
-                .edd-truemail-message {
+                .cc-message {
                     @apply p-0;
 
                     sup {
