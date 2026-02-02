@@ -290,6 +290,12 @@
                 fieldset + fieldset {
                     @apply mt-3;
                 }
+
+                #edd-paypal-container {
+                    iframe {
+                        @apply !bg-[#ffc439] rounded-xl hover:!bg-[#f2ba36];
+                    }
+                }
             }
 
             .edd-alert {
