@@ -160,11 +160,11 @@
                         position: absolute;
                         right: 0;
                         content: "";
-                        width: 222px;
-                        background: transparent url('../image/powered-by-mollie.png') no-repeat;
-                        background-size: 222px;
-                        height: 18px;
-                        margin-top: .25em;
+                        width: 125px;
+                        background: transparent url('../image/powered-by-stripe.svg') no-repeat;
+                        background-size: 125px;
+                        height: 28px;
+                        margin-top: 0;
                     }
                 }
 
@@ -178,11 +178,13 @@
                             @apply bg-primary-50 border-primary-500 before:content-[var(--icon-circle-check)];
                         }
 
-                        &#edd-gateway-option-mollie_creditcard {
+                        &#edd-gateway-option-mollie_creditcard,
+                        &#edd-gateway-option-stripe {
                             @apply after:bg-[url('../image/mollie-cc.png')];
                         }
 
-                        &#edd-gateway-option-mollie_paypal {
+                        &#edd-gateway-option-mollie_paypal,
+                        &#edd-gateway-option-paypal_commerce {
                             @apply after:bg-[url('../image/mollie-paypal.png')];
                         }
                     }
