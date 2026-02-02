@@ -52,7 +52,7 @@
         }
     }
 
-    .edd-blocks-form__cart,
+    .edd-blocks__cart,
     .edd-blocks-form__purchase {
         @apply lg:col-start-3 p-4 lg:p-6 rounded-lg lg:rounded-xl bg-white !border-solid border-0 border-t-4 border-primary-500 shadow-xl;
     }
@@ -61,8 +61,8 @@
         @apply lg:order-last;
     }
 
-    .edd-blocks-form__purchase {
-        @apply flex flex-col lg:col-span-2;
+    .edd-blocks__purchase-form {
+        @apply flex flex-col lg:row-1 lg:col-span-2;
     }
 
     #edd_sl_renewal_form,
@@ -160,9 +160,9 @@
                         position: absolute;
                         right: 0;
                         content: "";
-                        width: 125px;
+                        width: 124px;
                         background: transparent url('../image/powered-by-stripe.svg') no-repeat;
-                        background-size: 125px;
+                        background-size: 124px;
                         height: 28px;
                         margin-top: 0;
                     }
@@ -193,12 +193,14 @@
 
         }
 
-        #edd_purchase_form_wrap {
+        .edd-blocks__user-details {
             #edd_cc_address {
                 @apply mb-6;
 
-                > div {
-                    @apply col-span-1;
+                &.edd-blocks-form.cc-address {
+                    > div {
+                        @apply col-span-1;
+                    }
                 }
 
                 #edd-card-address-wrap {
@@ -225,9 +227,51 @@
                     @apply order-6;
                 }
 
+                #edd-card-vat-wrap {
+                    @apply order-last;
+
+                    .edd-vat-checkbox-wrap {
+                        @apply mb-0;
+                    }
+
+                    .edd-vat-number-wrap {
+                        @apply flex gap-2 w-full;
+
+                        .edd-vat-number-input {
+                            @apply grow max-w-none;
+                        }
+
+                        .edd-vat-check-button {
+                            @apply shrink-0 ml-0 font-brand font-semibold transition disabled:opacity-50 focus:outline-none text-center bg-primary-500 hover:bg-primary-600 text-white inline-block rounded-lg text-base py-2 px-4 shadow-lg;
+
+                            &.daan-dev-vat-valid {
+                                @apply bg-success-400;
+                            }
+                        }
+                    }
+                }
+
+                #edd-vat-check-result {
+                    @apply mb-6 mt-2 text-neutral-900 rounded-md border-t-4 md:border-l-4 md:border-t-0 p-4 md:p-8 flex flex-col md:flex-row;
+
+                    &.edd-vat__check--success {
+                        @apply hidden;
+                    }
+
+                    &.edd-vat__check--error {
+                        @apply bg-error-100 border-error-500 order-last col-span-2;
+                    }
+                }
+
                 .edd-blocks-form__halves {
                     @apply order-7 hidden col-span-2;
                 }
+            }
+        }
+
+        #edd_purchase_form_wrap {
+            #edd_secure_site_wrapper {
+                @apply hidden;
             }
 
             #edd_purchase_submit {
@@ -295,42 +339,6 @@
 
                     sup {
                         @apply top-0 mt-2;
-                    }
-                }
-            }
-
-            #edd-card-vat-wrap {
-                @apply order-last;
-
-                .edd-vat-checkbox-wrap {
-                    @apply mb-0;
-                }
-
-                .edd-vat-number-wrap {
-                    @apply flex gap-2 w-full;
-
-                    .edd-vat-number-input {
-                        @apply grow max-w-none;
-                    }
-
-                    .edd-vat-check-button {
-                        @apply shrink-0 ml-0 font-brand font-semibold transition disabled:opacity-50 focus:outline-none text-center bg-primary-500 hover:bg-primary-600 text-white inline-block rounded-lg text-base py-2 px-4 shadow-lg;
-
-                        &.daan-dev-vat-valid {
-                            @apply bg-success-400;
-                        }
-                    }
-                }
-
-                #edd-vat-check-result {
-                    @apply mb-6 mt-2 text-neutral-900 rounded-md border-t-4 md:border-l-4 md:border-t-0 p-4 md:p-8 flex flex-col md:flex-row;
-
-                    &.edd-vat__check--success {
-                        @apply hidden;
-                    }
-
-                    &.edd-vat__check--error {
-                        @apply bg-error-100 border-error-500;
                     }
                 }
             }
