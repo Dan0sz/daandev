@@ -291,8 +291,10 @@
                 }
 
                 #edd-paypal-container {
+                    @apply my-0 mx-auto max-w-[750px];
+
                     iframe {
-                        @apply !bg-[#ffc439] rounded-xl hover:!bg-[#f2ba36];
+                        @apply rounded-xl;
                     }
                 }
             }
