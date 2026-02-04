@@ -178,8 +178,7 @@
                             @apply bg-primary-50 border-primary-500 before:content-[var(--icon-circle-check)];
                         }
 
-                        &#edd-gateway-option-mollie_creditcard,
-                        &#edd-gateway-option-stripe {
+                        &#edd-gateway-option-mollie_creditcard {
                             @apply after:bg-[url('../image/mollie-cc.png')];
                         }
 
