@@ -8,6 +8,13 @@
 }
 
 /**
+ * Don't display title on Documentation page.
+ */
+.wp-help-scout-docs .entry-title {
+    display: none;
+}
+
+/**
  * Fix for empty p tags in TOCs
  */
 .wp-help-scout-docs-toc {
