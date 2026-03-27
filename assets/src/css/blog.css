@@ -8,6 +8,28 @@
 }
 
 /**
+ * Don't display title on Documentation page.
+ */
+.wp-help-scout-docs .entry-title {
+    display: none;
+}
+
+.wp-help-scout-docs-category {
+    .hs-docs-article {
+        .dashicons {
+            font-size: 16px;
+            width: 16px;
+            height: 16px;
+            line-height: 20px;
+            flex-shrink: 0;
+            display: inline-block;
+            vertical-align: -2px;
+            color: #00adda;
+        }
+    }
+}
+
+/**
  * Fix for empty p tags in TOCs
  */
 .wp-help-scout-docs-toc {
