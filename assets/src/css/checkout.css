@@ -161,7 +161,7 @@
                         right: 0;
                         content: "";
                         width: 421px;
-                        background: transparent url('../image/powered-by-stripe.png') no-repeat;
+                        background: transparent url("../image/powered-by-stripe.png") no-repeat;
                         background-size: 421px;
                         height: 28px;
                         margin-top: 0;
