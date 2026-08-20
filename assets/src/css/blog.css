@@ -1,5 +1,5 @@
 /**
- * Fix for bottom marging for search results.
+ * Fix for bottom margin for search results.
  */
 .search-results {
     #inner-wrap {
@@ -144,6 +144,21 @@
                         @apply px-1 py-2;
                     }
                 }
+            }
+        }
+
+        .sib_signup_form {
+            .sib-email-area {
+                grid-column: 1 / -1;
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            p:has(input[name="terms"]) {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                text-align: left;
             }
         }
     }
