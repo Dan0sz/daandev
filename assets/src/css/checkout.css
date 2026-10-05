@@ -65,15 +65,19 @@
         @apply flex flex-col lg:row-1 lg:col-span-2;
     }
 
+    /* EDD SL < 3.9.7: #edd_sl_renewal_form; 3.9.7+: renewal block (.edd-renewal-form--legacy). */
     #edd_sl_renewal_form,
-    #edd_sl_cancel_renewal_form {
+    #edd_sl_cancel_renewal_form,
+    .edd-renewal-form--legacy {
         @apply order-first lg:absolute lg:z-10 lg:top-6 lg:right-[calc(33.33%+2.125rem)] xl:right-[calc(33.33%+2.875rem)];
 
-        #edd_sl_renewal_fields {
+        #edd_sl_renewal_fields,
+        .edd-sl-license-renewal-block {
             @apply flex flex-col items-end p-0 border-0 bg-transparent;
         }
 
-        #edd_sl_show_renewal_form {
+        #edd_sl_show_renewal_form,
+        .edd-sl-show-renewal-form {
             @apply font-brand font-semibold transition disabled:opacity-50 focus:outline-none bg-primary-500 lg:bg-transparent hover:bg-primary-600 hover:lg:bg-transparent text-white lg:text-primary-500 !inline-flex w-full lg:w-auto items-center justify-center gap-1 rounded-md text-sm py-1.5 px-2 lg:p-0 shadow-lg lg:shadow-none before:block before:w-[1em] before:h-[1em] before:-mt-0.5 before:content-[var(--icon-repeat)] before:lg:content-[var(--icon-repeat-blue)];
         }
 
@@ -88,11 +92,13 @@
         .edd-sl-renewal-actions {
             @apply flex gap-2;
 
-            #edd-add-license-renewal {
+            #edd-add-license-renewal,
+            #edd-add-license-renewal-block {
                 @apply font-brand font-semibold transition disabled:opacity-50 focus:outline-none bg-secondary-500 hover:bg-secondary-600 text-white !inline-flex items-center justify-center gap-1 rounded-md text-sm py-1.5 px-2 shadow-lg;
             }
 
-            #edd-cancel-license-renewal {
+            #edd-cancel-license-renewal,
+            #edd-cancel-license-renewal-block {
                 @apply text-neutral-900 text-sm;
 
                 &:hover {
@@ -338,7 +344,8 @@
                 @apply hidden;
             }
 
-            #edd-edd_email-wrap {
+            #edd-edd_email-wrap,
+            #edd-email-wrap {
                 @apply md:col-span-2;
 
                 .cc-message {
@@ -363,7 +370,7 @@
     }
 }
 
-.edd-blocks-form.edd-blocks-form__cart {
+.wp-block-edd-checkout .edd-blocks-form__cart {
     #edd_checkout_cart {
         @apply gap-2;
     }
