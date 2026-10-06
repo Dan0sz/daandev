@@ -233,7 +233,7 @@
                 }
 
                 #edd-card-vat-wrap {
-                    @apply order-last;
+                    @apply order-last md:col-span-2;
 
                     .edd-vat-checkbox-wrap {
                         @apply mb-0;
@@ -347,6 +347,15 @@
             #edd-edd_email-wrap,
             #edd-email-wrap {
                 @apply md:col-span-2;
+
+                /* "Email already used" notice from daan-mods, styled like the other checkout errors. */
+                .daan-email-used-notice {
+                    @apply mt-2 bg-error-100 text-neutral-900 border-solid border-0 border-error-500 rounded-md border-t-4 md:border-l-4 md:border-t-0 p-4 md:px-8 md:py-6;
+
+                    a {
+                        @apply text-primary-500 underline hover:no-underline;
+                    }
+                }
 
                 .cc-message {
                     @apply p-0;
