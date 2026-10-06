@@ -52,9 +52,53 @@
         }
     }
 
-    .edd-blocks__cart,
+    .edd-blocks__cart {
+        @apply lg:col-start-3;
+    }
+
+    /* The cart wrapper only holds the cards: the cart itself and the review below it. */
+    .edd-blocks__cart > .edd-blocks-form__cart,
+    .edd-blocks-form__purchase,
+    .daan-checkout-review {
+        @apply p-4 lg:p-6 rounded-lg lg:rounded-xl bg-white !border-solid border-0 border-t-4 border-primary-500 shadow-xl;
+    }
+
     .edd-blocks-form__purchase {
-        @apply lg:col-start-3 p-4 lg:p-6 rounded-lg lg:rounded-xl bg-white !border-solid border-0 border-t-4 border-primary-500 shadow-xl;
+        @apply lg:col-start-3;
+    }
+
+    .daan-checkout-review {
+        @apply mt-8;
+
+        /* On mobile the renewal button sits between the cart and the review. */
+        .edd-renewal-form--legacy + & {
+            @apply mt-4 lg:mt-8;
+        }
+
+        /* The column is too narrow for the author, date and stars on one line: stars go on top, date below the name. */
+        .edd-review-meta {
+            @apply grid grid-cols-[auto_1fr] items-center;
+
+            .edd-review-meta-rating {
+                @apply col-span-2 order-first mb-3;
+            }
+
+            .avatar {
+                @apply row-span-2;
+            }
+
+            .edd-review-author {
+                @apply self-end;
+            }
+
+            .edd-review-author + span {
+                @apply self-start text-sm;
+            }
+        }
+
+        .edd-review-content {
+            @apply mt-2;
+        }
     }
 
     .edd-blocks-form__cart {
