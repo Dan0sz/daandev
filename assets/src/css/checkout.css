@@ -52,9 +52,70 @@
         }
     }
 
-    .edd-blocks__cart,
+    .edd-blocks__cart {
+        @apply lg:col-start-3;
+    }
+
+    /* The cart wrapper only holds the cards: the cart itself and the review below it. */
+    .edd-blocks__cart > .edd-blocks-form__cart,
+    .edd-blocks-form__purchase,
+    .daan-checkout-review {
+        @apply p-4 lg:p-6 rounded-lg lg:rounded-xl bg-white !border-solid border-0 border-t-4 border-primary-500 shadow-xl;
+    }
+
     .edd-blocks-form__purchase {
-        @apply lg:col-start-3 p-4 lg:p-6 rounded-lg lg:rounded-xl bg-white !border-solid border-0 border-t-4 border-primary-500 shadow-xl;
+        @apply lg:col-start-3;
+    }
+
+    .daan-checkout-review {
+        @apply mt-8;
+
+        /* On mobile the renewal button sits between the cart and the review. */
+        .edd-renewal-form--legacy + & {
+            @apply mt-4 lg:mt-8;
+        }
+
+        /* Avatar with the stars next to it, then the title and the review below it. */
+        .edd-review-author {
+            @apply flex flex-wrap items-center gap-x-4;
+
+            .avatar {
+                @apply flex-none rounded-full;
+            }
+
+            .edd-review-meta-rating {
+                @apply text-primary-500;
+            }
+
+            b {
+                @apply order-last w-full mt-3 leading-snug;
+            }
+        }
+
+        .edd-review-content {
+            @apply mt-2 line-clamp-5;
+        }
+
+        &.is-expanded .edd-review-content {
+            @apply line-clamp-none;
+        }
+
+        /* A subtle arrow below the text, pointing up once the review is expanded. */
+        .daan-checkout-review__toggle {
+            @apply flex mx-auto -mb-2 mt-1 !p-1 !bg-transparent !border-0 !shadow-none !text-neutral-400 hover:!text-primary-500 cursor-pointer;
+
+            .dashicons {
+                @apply transition-transform;
+            }
+
+            &[hidden] {
+                @apply hidden;
+            }
+        }
+
+        &.is-expanded .daan-checkout-review__toggle .dashicons {
+            @apply rotate-180;
+        }
     }
 
     .edd-blocks-form__cart {

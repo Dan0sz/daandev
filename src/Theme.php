@@ -63,6 +63,8 @@ class Theme {
         if ( function_exists( 'edd_reviews' ) ) {
             remove_filter( 'the_content', [ edd_reviews(), 'load_frontend' ] );
             add_action( 'kadence_before_footer', [ $this, 'echo_reviews' ] );
+
+            new CheckoutReview();
         }
 
         /**
