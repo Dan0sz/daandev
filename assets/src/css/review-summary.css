@@ -17,7 +17,7 @@
     }
 
     .daan-review-summary__count {
-        @apply text-neutral-500;
+        @apply text-neutral-800;
     }
 
     &:is(a):hover .daan-review-summary__count {
