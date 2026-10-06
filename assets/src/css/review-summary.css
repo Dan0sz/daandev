@@ -1,0 +1,41 @@
+/**
+ * Average rating + number of reviews, e.g. on download pages and plugin cards.
+ */
+.daan-review-summary {
+    @apply inline-flex items-center gap-1.5 font-brand text-sm leading-none text-neutral-900;
+
+    .daan-review-summary__stars {
+        @apply inline-flex text-primary-500;
+
+        .dashicons {
+            @apply w-4 h-4 text-base leading-none;
+        }
+    }
+
+    .daan-review-summary__average {
+        @apply font-semibold;
+    }
+
+    .daan-review-summary__count {
+        @apply text-neutral-500;
+    }
+
+    &:is(a):hover .daan-review-summary__count {
+        @apply underline;
+    }
+
+    /* Below the "Choose your license" title. */
+    &.daan-review-summary--widget {
+        @apply flex -mt-2 mb-4 !no-underline;
+    }
+
+    /* On the brand gradient of the homepage cards. */
+    &.daan-review-summary--on-brand {
+        @apply flex text-white drop-shadow-sm;
+
+        .daan-review-summary__stars,
+        .daan-review-summary__count {
+            @apply text-white;
+        }
+    }
+}

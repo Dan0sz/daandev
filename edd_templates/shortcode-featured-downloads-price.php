@@ -32,6 +32,7 @@
 				<?php endif; ?>
             </div>
         </div>
+		<?php echo \Daan\Theme\ReviewSummary::render( get_the_ID(), 'mt-1' ); ?>
         <div class="mt-2 !text-black">
 			<?php echo daan_get_tagline( get_the_ID() ); ?>
         </div>
