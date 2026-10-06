@@ -1,0 +1,50 @@
+/**
+ * Average rating + number of reviews, e.g. on download pages and plugin cards.
+ */
+.daan-review-summary {
+    @apply inline-flex items-center gap-1.5 font-brand text-sm leading-none text-neutral-900;
+
+    .daan-review-summary__stars {
+        @apply inline-flex text-primary-500;
+
+        .dashicons {
+            @apply w-4 h-4 text-base leading-none;
+        }
+    }
+
+    .daan-review-summary__average {
+        @apply font-semibold;
+    }
+
+    .daan-review-summary__count {
+        @apply text-neutral-800;
+    }
+
+    &:is(a):hover .daan-review-summary__count {
+        @apply underline;
+    }
+
+    /* On the brand gradient: the homepage cards and the hero of download pages. */
+    &.daan-review-summary--on-brand,
+    &.daan-review-summary--hero {
+        @apply flex text-white drop-shadow-sm;
+
+        .daan-review-summary__stars,
+        .daan-review-summary__count {
+            @apply text-white;
+        }
+    }
+
+    /* Below the tagline in the hero of download pages. */
+    &.daan-review-summary--hero {
+        @apply mt-2 sm:mt-3 lg:mt-5 gap-2 lg:gap-3 text-sm sm:text-lg lg:text-2xl !no-underline;
+
+        .daan-review-summary__stars {
+            @apply !text-yellow-300;
+
+            .dashicons {
+                @apply w-5 h-5 text-xl sm:w-6 sm:h-6 sm:text-2xl lg:w-9 lg:h-9 lg:text-4xl;
+            }
+        }
+    }
+}

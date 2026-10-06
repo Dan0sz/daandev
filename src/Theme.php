@@ -29,6 +29,11 @@ class Theme {
          */
         add_action( 'init', [ $this, 'add_account_menu' ] );
 
+        /**
+         * The checkout loads the payment fields and the Complete Order button over AJAX (which counts as admin).
+         */
+        new CheckoutGuarantee();
+
         // None of this is needed in the admin.
         if ( is_admin() ) {
             return;
@@ -65,6 +70,7 @@ class Theme {
             add_action( 'kadence_before_footer', [ $this, 'echo_reviews' ] );
 
             new CheckoutReview();
+            new ReviewSummary();
         }
 
         /**

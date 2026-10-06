@@ -1,3 +1,6 @@
+<?php if ( $review_summary = \Daan\Theme\ReviewSummary::render( get_the_ID(), 'daan-review-summary--on-brand' ) ) : ?>
+    <div class="absolute top-0 inset-x-0 flex justify-center p-4 lg:p-6"><?php echo $review_summary; ?></div>
+<?php endif; ?>
 <div class="absolute inset-0 top-auto p-4 lg:p-6">
     <button class="font-brand font-semibold transition disabled:opacity-50 focus:outline-none text-center editor-noclick !bg-white hover:bg-neutral-100 !text-neutral-900 inline-block rounded-lg lg:rounded-xl text-base lg:text-lg py-2 lg:py-2.5 px-4 lg:px-6 !shadow-lg flex items-center justify-center gap-2 w-full">
         <div class="inline-block">

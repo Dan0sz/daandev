@@ -58,7 +58,20 @@
         }
     }
 
-    .edd-reviews-form {
+    /* Not a buyer: just a line with a login link (logged out), or nothing at all (logged in). See edd_templates/reviews.php. */
+    .edd-reviews-form:not(:has(> form)) {
+        @apply mt-6 text-center;
+
+        .edd-reviews-not-allowed {
+            @apply m-0 p-0 bg-transparent border-0 text-base;
+
+            a {
+                @apply font-semibold text-primary-500 hover:underline;
+            }
+        }
+    }
+
+    .edd-reviews-form:has(> form) {
         @apply gap-4 mt-4 shadow-lg bg-white rounded-xl overflow-hidden p-8;
 
         fieldset {
