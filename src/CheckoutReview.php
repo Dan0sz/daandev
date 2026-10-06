@@ -49,11 +49,46 @@ class CheckoutReview {
 						get_comment_meta( $review->comment_ID, 'edd_rating', true )
 					); ?></span>
             </div>
-            <div class="edd-review-content">
+            <div class="edd-review-content" id="daan-checkout-review-content">
 				<?php echo apply_filters( 'get_comment_text', $review->comment_content ); ?>
             </div>
+            <button type="button" class="daan-checkout-review__toggle" aria-controls="daan-checkout-review-content" aria-expanded="false" aria-label="<?php esc_attr_e(
+				'Read more',
+				'daandev'
+			); ?>" hidden><span class="dashicons dashicons-arrow-down-alt2" aria-hidden="true"></span></button>
         </section>
 		<?php
+		wp_print_inline_script_tag( $this->get_toggle_script() );
+	}
+
+	/**
+	 * Long reviews are cut off after a few lines: show an arrow to expand them, but only when the text is actually cut off.
+	 *
+	 * @return string
+	 */
+	private function get_toggle_script() {
+		$labels = wp_json_encode( [ 'more' => __( 'Read more', 'daandev' ), 'less' => __( 'Read less', 'daandev' ) ] );
+
+		return <<<JS
+( function () {
+	const labels  = $labels;
+	const section = document.querySelector( '.daan-checkout-review' );
+	const content = section && section.querySelector( '.edd-review-content' );
+	const toggle  = section && section.querySelector( '.daan-checkout-review__toggle' );
+
+	if ( ! toggle || content.scrollHeight <= content.clientHeight + 1 ) {
+		return;
+	}
+
+	toggle.hidden = false;
+	toggle.addEventListener( 'click', function () {
+		const expanded = section.classList.toggle( 'is-expanded' );
+
+		toggle.setAttribute( 'aria-expanded', expanded ? 'true' : 'false' );
+		toggle.setAttribute( 'aria-label', expanded ? labels.less : labels.more );
+	} );
+} )();
+JS;
 	}
 
 	/**

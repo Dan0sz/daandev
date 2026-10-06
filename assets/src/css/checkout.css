@@ -75,25 +75,46 @@
             @apply mt-4 lg:mt-8;
         }
 
-        /* Like the reviews on product pages: avatar, title and stars on one line, the review below it (full width). */
+        /* Avatar with the stars next to it, then the title and the review below it. */
         .edd-review-author {
-            @apply flex items-center gap-4;
+            @apply flex flex-wrap items-center gap-x-4;
 
             .avatar {
                 @apply flex-none rounded-full;
             }
 
-            b {
-                @apply grow leading-snug;
+            .edd-review-meta-rating {
+                @apply text-primary-500;
             }
 
-            .edd-review-meta-rating {
-                @apply flex-none text-primary-500;
+            b {
+                @apply order-last w-full mt-3 leading-snug;
             }
         }
 
         .edd-review-content {
-            @apply mt-4 line-clamp-5;
+            @apply mt-2 line-clamp-5;
+        }
+
+        &.is-expanded .edd-review-content {
+            @apply line-clamp-none;
+        }
+
+        /* A subtle arrow below the text, pointing up once the review is expanded. */
+        .daan-checkout-review__toggle {
+            @apply flex mx-auto -mb-2 mt-1 !p-1 !bg-transparent !border-0 !shadow-none !text-neutral-400 hover:!text-primary-500 cursor-pointer;
+
+            .dashicons {
+                @apply transition-transform;
+            }
+
+            &[hidden] {
+                @apply hidden;
+            }
+        }
+
+        &.is-expanded .daan-checkout-review__toggle .dashicons {
+            @apply rotate-180;
         }
     }
 
