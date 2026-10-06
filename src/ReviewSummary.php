@@ -11,24 +11,6 @@ namespace Daan\Theme;
 
 class ReviewSummary {
 	/**
-	 * Build class.
-	 */
-	public function __construct() {
-		// Right below the "Choose your license" title of the Product Details widget on download pages.
-		add_action( 'edd_product_details_widget_before_title', [ $this, 'render_in_widget' ], 10, 2 );
-	}
-
-	/**
-	 * @param array $instance
-	 * @param int   $download_id
-	 *
-	 * @return void
-	 */
-	public function render_in_widget( $instance, $download_id ) {
-		echo self::render( $download_id, 'daan-review-summary--widget', get_permalink( $download_id ) . '#edd-reviews' );
-	}
-
-	/**
 	 * Average rating and number of approved reviews (replies not included). Cached for an hour.
 	 *
 	 * @param int $download_id

@@ -28,6 +28,11 @@ if ( $daan_logo_light ) : ?>
                                     <h1 class="font-brand !text-xl sm:!text-2xl md:!text-3xl lg:!text-4xl xl:!text-5xl font-semibold !text-white">
 										<?php echo daan_get_tagline( get_the_ID() ); ?>
                                     </h1>
+									<?php echo \Daan\Theme\ReviewSummary::render(
+										get_the_ID(),
+										'daan-review-summary--hero',
+										get_permalink() . '#edd-reviews'
+									); ?>
                                 </div>
                             </div>
                         </div>
