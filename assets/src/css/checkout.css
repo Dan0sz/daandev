@@ -75,7 +75,7 @@
             @apply mt-4 lg:mt-8;
         }
 
-        /* Like the reviews on product pages: avatar, title and stars on one line, the review below it. */
+        /* Like the reviews on product pages: avatar, title and stars on one line, the review below it (full width). */
         .edd-review-author {
             @apply flex items-center gap-4;
 
@@ -93,7 +93,7 @@
         }
 
         .edd-review-content {
-            @apply ml-16 mt-2 line-clamp-5;
+            @apply mt-4 line-clamp-5;
         }
     }
 
