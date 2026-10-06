@@ -386,6 +386,15 @@
                 }
             }
 
+            /* Below the Complete Order button, see CheckoutGuarantee. */
+            .daan-checkout-guarantee {
+                @apply flex flex-row flex-nowrap items-center justify-center gap-1.5 mt-5 mb-0 text-sm text-neutral-700 text-center;
+
+                svg {
+                    @apply inline-block fill-current w-[1em] h-[1em] m-0 shrink-0 text-secondary-500;
+                }
+            }
+
             #edd-purchase-button {
                 @apply block w-full rounded-xl text-lg py-2.5 px-6 shadow-lg bg-secondary-500 hover:bg-secondary-600 text-white font-brand font-semibold transition disabled:opacity-50 focus:outline-none text-center mt-6;
             }
