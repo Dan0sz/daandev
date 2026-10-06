@@ -75,29 +75,25 @@
             @apply mt-4 lg:mt-8;
         }
 
-        /* The column is too narrow for the author, date and stars on one line: stars go on top, date below the name. */
-        .edd-review-meta {
-            @apply grid grid-cols-[auto_1fr] items-center;
-
-            .edd-review-meta-rating {
-                @apply col-span-2 order-first mb-3;
-            }
+        /* Like the reviews on product pages: avatar, title and stars on one line, the review below it. */
+        .edd-review-author {
+            @apply flex items-center gap-4;
 
             .avatar {
-                @apply row-span-2;
+                @apply flex-none rounded-full;
             }
 
-            .edd-review-author {
-                @apply self-end;
+            b {
+                @apply grow leading-snug;
             }
 
-            .edd-review-author + span {
-                @apply self-start text-sm;
+            .edd-review-meta-rating {
+                @apply flex-none text-primary-500;
             }
         }
 
         .edd-review-content {
-            @apply mt-2;
+            @apply ml-16 mt-2 line-clamp-5;
         }
     }
 

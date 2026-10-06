@@ -41,8 +41,16 @@ class CheckoutReview {
         <section class="daan-checkout-review" aria-label="<?php echo esc_attr(
 			sprintf( __( 'Review of %s', 'daandev' ), get_the_title( $review->comment_post_ID ) )
 		); ?>">
-            <div class="edd-review edd-review-body">
-				<?php Reviews::render_review_content( $review, 48, false ); ?>
+            <div class="edd-review-author">
+				<?php // By email: WordPress only shows avatars for the 'comment' type, not for 'edd_review'. ?>
+				<?php echo get_avatar( $review->comment_author_email, 48 ); ?>
+                <b><?php echo esc_html( get_comment_meta( $review->comment_ID, 'edd_review_title', true ) ); ?></b>
+                <span class="edd-review-meta-rating"><?php edd_reviews()->render_star_rating(
+						get_comment_meta( $review->comment_ID, 'edd_rating', true )
+					); ?></span>
+            </div>
+            <div class="edd-review-content">
+				<?php echo apply_filters( 'get_comment_text', $review->comment_content ); ?>
             </div>
         </section>
 		<?php
