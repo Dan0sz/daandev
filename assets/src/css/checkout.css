@@ -233,10 +233,15 @@
                 }
 
                 #edd-card-vat-wrap {
+                    /* Full width, so the error message spans both columns; the field itself stays in the left column. */
                     @apply order-last md:col-span-2;
 
                     .edd-vat-checkbox-wrap {
                         @apply mb-0;
+                    }
+
+                    #edd-vat-fields-wrap {
+                        @apply md:w-[calc(50%-0.5rem)] lg:w-[calc(50%-0.75rem)];
                     }
 
                     .edd-vat-number-wrap {
