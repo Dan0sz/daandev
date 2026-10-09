@@ -39,6 +39,7 @@ class CheckoutReview {
 			return;
 		} ?>
         <section class="daan-checkout-review" aria-label="<?php echo esc_attr(
+			/* translators: %s: product name. */
 			sprintf( __( 'Review of %s', 'daandev' ), get_the_title( $review->comment_post_ID ) )
 		); ?>">
             <div class="edd-review-author">
