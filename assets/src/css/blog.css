@@ -1,32 +1,9 @@
 /**
- * Fix for bottom margin for search results.
+ * Don't display title on Documentation page. Docs category pages and search results are displayed as the Documentation
+ * page too (WP Help Scout Docs 3.3.0+), but do show their title.
  */
-.search-results {
-    #inner-wrap {
-        @apply mb-12;
-    }
-}
-
-/**
- * Don't display title on Documentation page.
- */
-.wp-help-scout-docs .entry-title {
+.wp-help-scout-docs:not(.tax-hs-docs-category):not(.search) .entry-title {
     display: none;
-}
-
-.wp-help-scout-docs-category {
-    .hs-docs-article {
-        .dashicons {
-            font-size: 16px;
-            width: 16px;
-            height: 16px;
-            line-height: 20px;
-            flex-shrink: 0;
-            display: inline-block;
-            vertical-align: -2px;
-            color: #00adda;
-        }
-    }
 }
 
 /**
@@ -104,38 +81,10 @@
                 }
             }
         }
-
-        &.hs-docs-article-archive, &.search-archive {
-            @apply grid-cols-1 md:grid-cols-2 gap-y-4 mb-12;
-
-            article {
-                @apply shadow-none;
-
-                .entry-content-wrap {
-                    @apply p-0;
-                }
-            }
-
-            h2 {
-                @apply col-span-2 mt-12 text-2xl sm:mb-4;
-
-                &:first-child {
-                    @apply mt-0;
-                }
-            }
-
-            &.loop-entry {
-
-            }
-        }
     }
 
     .content-wrap {
         @apply mb-8;
-
-        &.search-archive.grid-cols {
-            @apply gap-y-2;
-        }
 
         .hs-docs-article {
             .hs-table {

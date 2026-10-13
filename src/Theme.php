@@ -92,10 +92,9 @@ class Theme {
         add_action( 'wp', [ $this, 'maybe_change_footer' ] );
 
         /**
-         * Disable WP Help Scout Docs' default template, so we can use our own archive template.
+         * Search is for docs only.
          */
-        add_action( 'pre_get_posts', [ $this, 'maybe_load_all_posts' ] );
-        add_filter( 'kadence_title_elements_template_path', [ $this, 'maybe_disable_template_element' ], 10, 2 );
+        add_action( 'pre_get_posts', [ $this, 'restrict_search_to_docs' ] );
 
         /**
          * Template hooks
@@ -441,46 +440,20 @@ class Theme {
     }
 
     /**
-     * Load all posts if this is our Documentation page.
+     * Search on daan.dev is for docs only. WP Help Scout Docs then displays the results in the design of the
+     * Documentation page (3.3.0+).
      *
-     * @param $query
+     * @param \WP_Query $query
      *
-     * @return mixed
+     * @return \WP_Query
      */
-    public function maybe_load_all_posts( $query ) {
-        if ( ( $query->is_post_type_archive( 'hs-docs-article' ) || is_tax( 'hs-docs-category' ) || is_search() ) && ! is_admin() && $query->is_main_query() ) {
-            global $wpdb;
-
-            // Run the custom SQL query
-            $sql       = "SELECT p.* FROM {$wpdb->posts} AS p
-                    INNER JOIN {$wpdb->term_relationships} AS r ON p.ID = r.object_id
-                    INNER JOIN {$wpdb->term_taxonomy} AS tt ON r.term_taxonomy_id = tt.term_taxonomy_id
-                    INNER JOIN {$wpdb->terms} AS t ON t.term_id = tt.term_id
-                    WHERE tt.taxonomy = %s
-                    AND p.post_status = 'publish'
-                    AND p.post_type = %s
-                    ORDER BY t.name ASC";
-            $taxonomy  = 'hs-docs-category';
-            $post_type = 'hs-docs-article';
-
-            // Fetch posts based on the SQL query
-            $posts    = $wpdb->get_results( $wpdb->prepare( $sql, $taxonomy, $post_type ) );
-            $post_ids = wp_list_pluck( $posts, 'ID' );
-
-            $query->set( 'post__in', $post_ids );
-            $query->set( 'orderby', 'post__in' );
+    public function restrict_search_to_docs( $query ) {
+        if ( $query->is_search() && $query->is_main_query() && ! is_admin() ) {
+            $query->set( 'post_type', 'hs-docs-article' );
             $query->set( 'posts_per_page', - 1 );
         }
 
         return $query;
-    }
-
-    public function maybe_disable_template_element( $template, $item ) {
-        if ( $item === 'title' && ( is_post_type_archive( 'hs-docs-article' ) || is_tax( 'hs-docs-category' ) ) ) {
-            return '';
-        }
-
-        return $template;
     }
 
     /**
