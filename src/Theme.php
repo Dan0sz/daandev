@@ -92,10 +92,10 @@ class Theme {
         add_action( 'wp', [ $this, 'maybe_change_footer' ] );
 
         /**
-         * Disable WP Help Scout Docs' default template, so we can use our own archive template.
+         * Show all docs in search results. Docs categories are displayed as the Documentation page by WP Help Scout
+         * Docs (3.3.0+).
          */
         add_action( 'pre_get_posts', [ $this, 'maybe_load_all_posts' ] );
-        add_filter( 'kadence_title_elements_template_path', [ $this, 'maybe_disable_template_element' ], 10, 2 );
 
         /**
          * Template hooks
@@ -441,14 +441,14 @@ class Theme {
     }
 
     /**
-     * Load all posts if this is our Documentation page.
+     * Show all docs in search results, ordered by category.
      *
      * @param $query
      *
      * @return mixed
      */
     public function maybe_load_all_posts( $query ) {
-        if ( ( $query->is_post_type_archive( 'hs-docs-article' ) || is_tax( 'hs-docs-category' ) || is_search() ) && ! is_admin() && $query->is_main_query() ) {
+        if ( is_search() && ! is_admin() && $query->is_main_query() ) {
             global $wpdb;
 
             // Run the custom SQL query
@@ -473,14 +473,6 @@ class Theme {
         }
 
         return $query;
-    }
-
-    public function maybe_disable_template_element( $template, $item ) {
-        if ( $item === 'title' && ( is_post_type_archive( 'hs-docs-article' ) || is_tax( 'hs-docs-category' ) ) ) {
-            return '';
-        }
-
-        return $template;
     }
 
     /**

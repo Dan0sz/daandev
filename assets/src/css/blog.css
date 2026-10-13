@@ -8,25 +8,11 @@
 }
 
 /**
- * Don't display title on Documentation page.
+ * Don't display title on Documentation page. Docs category pages are displayed as the Documentation page too (WP Help
+ * Scout Docs 3.3.0+), but do show their title.
  */
-.wp-help-scout-docs .entry-title {
+.wp-help-scout-docs:not(.tax-hs-docs-category) .entry-title {
     display: none;
-}
-
-.wp-help-scout-docs-category {
-    .hs-docs-article {
-        .dashicons {
-            font-size: 16px;
-            width: 16px;
-            height: 16px;
-            line-height: 20px;
-            flex-shrink: 0;
-            display: inline-block;
-            vertical-align: -2px;
-            color: #00adda;
-        }
-    }
 }
 
 /**
@@ -105,7 +91,7 @@
             }
         }
 
-        &.hs-docs-article-archive, &.search-archive {
+        &.search-archive {
             @apply grid-cols-1 md:grid-cols-2 gap-y-4 mb-12;
 
             article {
