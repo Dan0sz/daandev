@@ -8,7 +8,6 @@
 }
 
 .single-hs-docs-article,
-.search-results,
 .wp-help-scout-docs {
     .sidebar-inner-wrap {
         @apply p-4 lg:p-6 rounded-lg lg:rounded-xl bg-white border-t-4 border-primary-500 shadow-xl sticky top-4;
