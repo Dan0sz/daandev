@@ -15,6 +15,14 @@
 }
 
 /**
+ * WP Help Scout Docs' Form Integration: matching docs below the contact form's subject field, in the colors of the info
+ * notices. Doubled class to win from WPForms' resets (e.g. div.wpforms-container-full *).
+ */
+div.wp-help-scout-docs-form-results.wp-help-scout-docs-form-results {
+    @apply p-4 rounded-md bg-primary-100 text-neutral-900 border-0 border-l-4 border-solid border-primary-500;
+}
+
+/**
  * Fix for empty p tags in TOCs
  */
 .wp-help-scout-docs-toc {
