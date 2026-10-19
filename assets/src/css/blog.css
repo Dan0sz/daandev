@@ -7,6 +7,14 @@
 }
 
 /**
+ * HTML blocks in Help Scout Docs articles (e.g. a list with colored dots): Kadence removes the bottom margin of the
+ * last element in a block, so the block itself gets the spacing.
+ */
+.single-hs-docs-article .single-content [data-html-block]:not(:last-child) {
+    margin-bottom: var(--global-md-spacing);
+}
+
+/**
  * Fix for empty p tags in TOCs
  */
 .wp-help-scout-docs-toc {
