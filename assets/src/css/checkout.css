@@ -374,10 +374,11 @@
             .edd-alert {
                 &.edd-alert-error,
                 &.edd-alert-warn {
-                    @apply mb-6 bg-error-100 text-neutral-900 border-error-500 rounded-md border-t-4 md:border-l-4 md:border-t-0 p-4 md:p-8 flex flex-col md:flex-row;
+                    @apply mb-6 bg-error-100 text-neutral-900 border-error-500 rounded-md border-t-4 md:border-l-4 md:border-t-0 p-4 md:p-8 flex flex-col gap-2;
 
+                    /* One error per line, without EDD's padding or the paragraph margin. The form's paragraphs are grids, which would indent the message under "Error". */
                     .edd_error {
-                        @apply text-base lg:text-lg;
+                        @apply block !m-0 p-0 text-base lg:text-lg;
                     }
                 }
 
