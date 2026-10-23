@@ -23,11 +23,12 @@ if ( $daan_logo_light ) : ?>
                     <div class="col-span-4 md:col-span-10 py-10 pr-4 md:py-12 md:pr-8 lg:pr-4 flex bg-linear-to-br <?php echo $brand[ 'from-light' ]; ?> <?php echo $brand[ 'to-dark' ]; ?>">
                         <div class="flex items-center">
                             <div class="-ml-12 sm:-ml-16 lg:-ml-[5.75rem]">
-                                <img src="<?php echo $daan_logo_light; ?>" class="block !h-24 sm:!h-32 lg:!h-46">
+                                <img src="<?php echo $daan_logo_light; ?>" alt="<?php echo esc_attr( get_the_title() ); ?>" class="block !h-24 sm:!h-32 lg:!h-46">
                                 <div class="pl-[calc(6rem+(6rem/10.71))] sm:pl-[calc(8rem+(8rem/10.71))] lg:pl-[calc(11.5rem+(11.5rem/10.71))]">
-                                    <h1 class="font-brand !text-xl sm:!text-2xl md:!text-3xl lg:!text-4xl xl:!text-5xl font-semibold !text-white">
+                                    <?php // The page's H1 is the product name, below the hero. ?>
+                                    <p class="font-brand !text-xl sm:!text-2xl md:!text-3xl lg:!text-4xl xl:!text-5xl font-semibold !text-white">
 										<?php echo daan_get_tagline( get_the_ID() ); ?>
-                                    </h1>
+                                    </p>
 									<?php echo \Daan\Theme\ReviewSummary::render(
 										get_the_ID(),
 										'daan-review-summary--hero',
