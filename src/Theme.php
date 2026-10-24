@@ -74,6 +74,11 @@ class Theme {
         }
 
         /**
+         * EDD Recurring's Update Payment Method page.
+         */
+        new SubscriptionUpdate();
+
+        /**
          * Additional templates
          */
         add_action( 'kadence_before_footer', [ $this, 'maybe_add_usp_footer' ], 8 );

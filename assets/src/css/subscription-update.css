@@ -1,0 +1,75 @@
+/* EDD Recurring's Update Payment Method page (/subscription/update/…): styled like the checkout. */
+.edd-recurring__update--page {
+    @apply max-w-3xl mx-auto my-16 px-4;
+
+    .edd-recurring__update--header h1 {
+        @apply text-3xl lg:text-4xl mb-4;
+    }
+
+    .edd-recurring__update--content {
+        @apply p-4 lg:p-8 rounded-lg lg:rounded-xl bg-white !border-solid border-0 border-t-4 border-primary-500 shadow-xl;
+
+        > p:first-child {
+            @apply mt-0 mb-6;
+        }
+
+        fieldset {
+            @apply grid grid-cols-1 gap-6 p-0 m-0 mb-6 border-0;
+
+            &#edd_cc_address {
+                @apply md:grid-cols-2;
+            }
+
+            legend {
+                @apply float-left w-full col-span-full p-0 mb-4 font-brand font-semibold text-xl;
+            }
+
+            > div,
+            > p {
+                @apply !block !m-0;
+            }
+        }
+
+        label.edd-label {
+            @apply !block !w-auto !float-none font-semibold !mb-0.5;
+        }
+
+        .edd-required-indicator {
+            @apply text-error-500 ml-0.5;
+        }
+
+        .edd-input,
+        .edd-select {
+            @apply !w-full !max-w-none rounded-md border border-solid border-neutral-300 bg-white py-[calc(--spacing(2)-1px)] px-[calc(--spacing(3)-1px)] text-base;
+        }
+
+        /* The same order as the checkout. */
+        #edd-card-address-wrap {
+            @apply order-1;
+        }
+
+        #edd-card-address-2-wrap {
+            @apply order-2;
+        }
+
+        #edd-card-city-wrap {
+            @apply order-3;
+        }
+
+        #edd-card-zip-wrap {
+            @apply order-4;
+        }
+
+        #edd-card-country-wrap {
+            @apply order-5;
+        }
+
+        #edd-card-state-wrap {
+            @apply order-6;
+        }
+
+        [type=submit] {
+            @apply block w-full rounded-xl text-lg py-2.5 px-6 shadow-lg mt-6;
+        }
+    }
+}
