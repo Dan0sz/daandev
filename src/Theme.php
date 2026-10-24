@@ -70,9 +70,13 @@ class Theme {
             add_action( 'kadence_before_footer', [ $this, 'echo_reviews' ] );
 
             new CheckoutReview();
-            new SubscriptionUpdate();
             new ReviewSummary();
         }
+
+        /**
+         * EDD Recurring's Update Payment Method page.
+         */
+        new SubscriptionUpdate();
 
         /**
          * Additional templates
