@@ -28,6 +28,7 @@ Template: kadence
 @import "./assets/src/css/reviews.css";
 @import "./assets/src/css/review-summary.css";
 @import "./assets/src/css/subscription-update.css";
+@import "./assets/src/css/account.css";
 @import "./assets/src/css/view-changelog.css";
 @import "./assets/src/css/widgets.css";
 
