@@ -33,7 +33,7 @@ if ( empty( $testimonial ) ) {
 ?>
 <div class="daan-dev-usp py-12 lg:py-16">
     <div class="site-container container">
-        <blockquote class="about-the-author text-black text-center py-0 px-10 lg:px-28 border-l-0">
+        <blockquote class="about-the-author text-black text-center py-0 border-l-0">
             <div class=" flex flex-col lg:flex-row gap-y-4 items-center align-center lg:gap-x-18">
                 <div class="rounded-full w-20 md:w-32 lg:w-48 shadow-md shrink-0 relative overflow-hidden">
                     <figure data-loading="lazy" class="relative aspect-1/1 !m-0">
