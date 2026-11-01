@@ -82,8 +82,9 @@
     .eba__content #edd_sl_license_keys {
         @apply !block;
 
+        /* Hidden, but still read by screen readers. */
         thead {
-            @apply hidden;
+            @apply sr-only;
         }
 
         tbody, tr, td {
