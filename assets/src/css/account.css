@@ -2,3 +2,103 @@
 .has-account-tabs #wrapper {
     @apply bg-transparent;
 }
+
+/* Kadence's narrow content width leaves too little room next to the tabs. */
+.has-account-tabs.content-width-narrow .content-container.site-container {
+    max-width: var(--global-content-width);
+}
+
+/* The content of each account page on a white card, like the checkout. */
+.has-account-tabs .eba__content {
+    @apply p-4 lg:p-8 rounded-lg lg:rounded-xl bg-white !border-solid border-0 border-t-4 border-primary-500 shadow-xl;
+
+    > :first-child {
+        @apply mt-0;
+    }
+
+    > :last-child {
+        @apply mb-0;
+    }
+
+    /* Notices stick out of the content a bit elsewhere, but stay on the card here. */
+    .notice {
+        @apply lg:!mx-0 rounded-md;
+    }
+
+    /* The Update Payment Method form is already on this card. */
+    .edd-recurring__update--content,
+    #edd-recurring-form {
+        @apply !p-0 !rounded-none !bg-transparent !border-0 !shadow-none;
+    }
+}
+
+/* License keys (EDD Software Licensing), with a copy button (EDD Better Account). */
+#edd_sl_license_keys {
+    @apply w-full border-collapse;
+
+    thead th {
+        @apply pb-3 border-0 border-b border-solid border-neutral-200;
+    }
+
+    tbody td {
+        @apply py-6 align-top border-0 border-b border-solid border-neutral-100;
+
+        &:first-child {
+            @apply w-1/2 pr-8;
+        }
+    }
+
+    tbody tr:last-child td {
+        @apply border-b-0 pb-0;
+    }
+
+    .edd_sl_item_name {
+        @apply mb-2 font-semibold;
+    }
+
+    .edd-sl-child-licenses {
+        @apply mt-2 mb-0 pl-0 list-none;
+
+        li {
+            @apply mt-3;
+        }
+
+        span {
+            @apply block mb-1;
+        }
+    }
+
+    input.edd_sl_license_key {
+        @apply w-full rounded-md border border-solid border-neutral-300 bg-neutral-50 py-[calc(--spacing(2)-1px)] px-[calc(--spacing(3)-1px)] font-mono text-sm text-neutral-900;
+    }
+
+    .eba-copy input.edd_sl_license_key {
+        @apply pr-12;
+    }
+}
+
+/* On smaller screens, each license key is shown below its name. */
+@media (max-width: 1023px) {
+    .eba__content #edd_sl_license_keys {
+        @apply !block;
+
+        /* Hidden, but still read by screen readers. */
+        thead {
+            @apply sr-only;
+        }
+
+        tbody, tr, td {
+            @apply block;
+        }
+
+        tbody td {
+            &:first-child {
+                @apply w-full pr-0 pb-3 border-b-0;
+            }
+
+            &:last-child {
+                @apply pt-0;
+            }
+        }
+    }
+}
