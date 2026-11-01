@@ -1,0 +1,208 @@
+/* AffiliateWP's Affiliate Area, styled like the account pages (EDD Better Account): the light blue body background. */
+.has-affiliate-area #wrapper {
+    @apply bg-transparent;
+}
+
+.has-affiliate-area.content-width-narrow .content-container.site-container {
+    max-width: var(--global-content-width);
+}
+
+/* The login form, on a white card. */
+.has-affiliate-area .entry-content > .affwp-form {
+    @apply max-w-xl p-4 lg:p-8 rounded-lg lg:rounded-xl bg-white border-0 border-t-4 border-solid border-primary-500 shadow-xl;
+
+    fieldset {
+        @apply m-0 p-0;
+    }
+
+    legend {
+        @apply mb-4 text-xl font-semibold;
+    }
+
+    p:last-child {
+        @apply mb-0;
+    }
+}
+
+.has-affiliate-area .affwp-notice {
+    @apply mb-6 p-4 rounded-md border-0 border-l-4 border-solid border-warning-500 bg-warning-100 text-neutral-900;
+
+    &.affwp-notice-error {
+        @apply border-error-500 bg-error-100;
+    }
+}
+
+/* Tabs on the left, like the account pages. */
+#affwp-affiliate-dashboard {
+    @apply lg:grid lg:grid-cols-[15rem_minmax(0,1fr)] lg:gap-x-10 lg:items-start;
+
+    > .affwp-notice {
+        @apply col-span-full;
+    }
+
+    #affwp-affiliate-dashboard-tabs {
+        @apply flex gap-1 mb-6 lg:mb-0 p-2 list-none overflow-x-auto bg-white rounded-xl shadow-[0_10px_25px_-5px_rgb(0_0_0/.08),0_0_0_1px_rgb(0_0_0/.04)];
+        @apply lg:sticky lg:top-8 lg:flex-col lg:gap-0 lg:overflow-visible;
+        scrollbar-width: none;
+
+        li {
+            @apply shrink-0 m-0 p-0;
+
+            /* Log out, at the end. */
+            &:last-child:has(a[href*="action=logout"]) {
+                @apply lg:mt-2 lg:pt-2 lg:border-0 lg:border-t lg:border-solid lg:border-neutral-200;
+            }
+        }
+
+        a {
+            @apply block py-2 px-4 lg:py-[.65rem] border-0 border-b-[3px] lg:border-b-0 lg:border-l-[3px] border-solid border-transparent rounded-lg text-inherit font-medium whitespace-nowrap no-underline;
+
+            &:hover, &:focus-visible {
+                @apply text-primary-500;
+                background: color-mix(in srgb, var(--global-palette1) 10%, #fff);
+            }
+        }
+
+        .active a {
+            @apply border-primary-500 text-primary-500 font-semibold;
+            background: color-mix(in srgb, var(--global-palette1) 10%, #fff);
+        }
+    }
+}
+
+/* The content of each tab on a white card, like the checkout. */
+.affiliate-area__content {
+    @apply p-4 lg:p-8 rounded-lg lg:rounded-xl bg-white border-0 border-t-4 border-solid border-primary-500 shadow-xl;
+
+    .affwp-tab-content + .affwp-tab-content {
+        @apply mt-8;
+    }
+
+    > :first-child > :first-child,
+    h4:first-child {
+        @apply mt-0;
+    }
+
+    > :last-child > :last-child,
+    .affwp-table:last-child {
+        @apply mb-0;
+    }
+
+    h4 {
+        @apply mb-4 text-xl font-semibold;
+    }
+
+    /* The cards on the Affiliate URLs tab are already on this card. */
+    .affwp-card {
+        --affwp-card-padding: 0;
+        @apply m-0 border-0 rounded-none shadow-none;
+
+        & + .affwp-card, & + .affwp-form {
+            @apply mt-8 pt-8 border-0 border-t border-solid border-neutral-200;
+        }
+    }
+
+    .affwp-card__header {
+        @apply p-0 pb-4;
+    }
+
+    .affwp-form .affwp-card {
+        @apply mt-0;
+    }
+
+    .affwp-form {
+        @apply mb-0;
+    }
+
+    /* Fields like the checkout's. */
+    input[type="text"], input[type="url"], input[type="email"], input[type="number"], select, textarea {
+        @apply w-full rounded-md border border-solid border-neutral-300 bg-neutral-50 py-[calc(--spacing(2)-1px)] px-[calc(--spacing(3)-1px)] text-neutral-900;
+    }
+
+    input[readonly] {
+        @apply font-mono text-sm;
+    }
+
+    hr {
+        @apply my-8 border-0 border-t border-solid border-neutral-200;
+    }
+
+    .affwp-affiliate-link__display {
+        @apply items-center;
+
+        .button {
+            @apply shrink-0 whitespace-nowrap;
+        }
+    }
+
+    #affwp-generator-toggle-campaign {
+        @apply inline-block mb-2;
+    }
+
+    #affwp-graphs-filter .tablenav {
+        @apply flex flex-wrap items-center gap-2;
+
+        select {
+            @apply w-auto pr-10;
+        }
+    }
+}
+
+/* Tables like the account pages': no cell borders, just a line between the rows. */
+.affiliate-area__content table.affwp-table {
+    @apply w-full mb-6 border-0;
+
+    th, td {
+        @apply py-3 pl-0 pr-4 border-0 border-b border-solid border-neutral-100 bg-transparent text-neutral-900;
+    }
+
+    th {
+        @apply border-neutral-200 font-semibold;
+    }
+
+    tr:last-child td {
+        @apply border-b-0;
+    }
+}
+
+/* On smaller screens AffiliateWP shows each row with labels: a card per row, like the account pages. */
+@media (max-width: 767px) {
+    .affiliate-area__content table.affwp-table-responsive {
+        thead {
+            @apply sr-only;
+        }
+
+        tbody tr {
+            @apply block mb-3 py-1 px-4 rounded-lg border border-solid border-neutral-200;
+
+            &:last-child {
+                @apply mb-0;
+            }
+
+            /* "You have not made any referrals yet." isn't a row. */
+            &:has(.affwp-table-no-data) {
+                @apply p-0 border-0;
+            }
+        }
+
+        td {
+            @apply flex-wrap gap-x-4 py-2 px-0 text-right;
+
+            &:first-child {
+                @apply bg-transparent;
+            }
+
+            &:last-child {
+                @apply mb-0 border-b-0;
+            }
+
+            &::before {
+                @apply font-semibold text-left;
+            }
+        }
+
+        td.affwp-table-no-data {
+            @apply text-left;
+        }
+    }
+}
