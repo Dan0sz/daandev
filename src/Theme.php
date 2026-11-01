@@ -79,6 +79,11 @@ class Theme {
         new SubscriptionUpdate();
 
         /**
+         * AffiliateWP's Affiliate Area.
+         */
+        new AffiliateArea();
+
+        /**
          * Additional templates
          */
         add_action( 'kadence_before_footer', [ $this, 'maybe_add_usp_footer' ], 8 );
