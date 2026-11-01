@@ -91,6 +91,19 @@
             @apply block;
         }
 
+        /* Not a card per row (EDD Better Account), the license key is clear enough without labels. */
+        tr {
+            @apply m-0 p-0 border-0 rounded-none bg-transparent;
+        }
+
+        td {
+            @apply text-left;
+
+            &::before {
+                @apply content-none;
+            }
+        }
+
         tbody td {
             &:first-child {
                 @apply w-full pr-0 pb-3 border-b-0;
@@ -99,6 +112,24 @@
             &:last-child {
                 @apply pt-0;
             }
+        }
+    }
+}
+
+@media (max-width: 1023px) {
+    /* Easy Moneybird for EDD's "Invoice N/A": only show the column when there's an invoice. */
+    .eba__content td.edd_moneybird_download_invoice:not(:has(a)) {
+        @apply !hidden;
+    }
+
+    /* EDD's Files block stacks by itself: show each product as a card, like the tables' rows. */
+    .eba__content .wp-block-edd-user-downloads {
+        .edd-order-items__header {
+            @apply !hidden;
+        }
+
+        .edd-order-item__product {
+            @apply mb-3 py-3 px-4 rounded-lg border border-solid border-neutral-200;
         }
     }
 }
