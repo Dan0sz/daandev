@@ -1,0 +1,4 @@
+/* Account pages with tabs (EDD Better Account): show the light blue body background, like the Update Payment Method page. */
+.has-account-tabs #wrapper {
+    @apply bg-transparent;
+}
