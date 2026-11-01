@@ -43,7 +43,9 @@
     #affwp-affiliate-dashboard-tabs {
         @apply flex gap-1 mb-6 lg:mb-0 p-2 list-none overflow-x-auto bg-white rounded-xl shadow-[0_10px_25px_-5px_rgb(0_0_0/.08),0_0_0_1px_rgb(0_0_0/.04)];
         @apply lg:sticky lg:top-8 lg:flex-col lg:gap-0 lg:overflow-visible;
-        scrollbar-width: none;
+
+        /* A thin scrollbar, so it can still be dragged with a mouse. */
+        scrollbar-width: thin;
 
         li {
             @apply shrink-0 m-0 p-0;
