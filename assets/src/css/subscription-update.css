@@ -5,71 +5,73 @@
     .edd-recurring__update--header h1 {
         @apply text-3xl lg:text-4xl mb-4;
     }
+}
 
-    .edd-recurring__update--content {
-        @apply p-4 lg:p-8 rounded-lg lg:rounded-xl bg-white !border-solid border-0 border-t-4 border-primary-500 shadow-xl;
+/* The form on that page, and the one logged in customers get on Account > Subscriptions (?action=update). */
+.edd-recurring__update--page .edd-recurring__update--content,
+#edd-recurring-form:not(.edd-recurring__update--content #edd-recurring-form) {
+    @apply p-4 lg:p-8 rounded-lg lg:rounded-xl bg-white !border-solid border-0 border-t-4 border-primary-500 shadow-xl;
 
-        > p:first-child {
-            @apply mt-0 mb-6;
+    > p:first-child {
+        @apply mt-0 mb-6;
+    }
+
+    fieldset {
+        @apply grid grid-cols-1 gap-6 p-0 m-0 mb-6 border-0;
+
+        &#edd_cc_address {
+            @apply md:grid-cols-2;
         }
 
-        fieldset {
-            @apply grid grid-cols-1 gap-6 p-0 m-0 mb-6 border-0;
-
-            &#edd_cc_address {
-                @apply md:grid-cols-2;
-            }
-
-            legend {
-                @apply float-left w-full col-span-full p-0 mb-4 font-brand font-semibold text-xl;
-            }
-
-            > div,
-            > p {
-                @apply !block !m-0;
-            }
+        legend {
+            @apply float-left w-full col-span-full p-0 mb-4 font-brand font-semibold text-xl;
         }
 
-        label.edd-label {
-            @apply !block !w-auto !float-none font-semibold !mb-0.5;
+        > div,
+        > p {
+            @apply !block !m-0;
         }
+    }
 
-        .edd-required-indicator {
-            @apply text-error-500 ml-0.5;
-        }
+    label.edd-label {
+        @apply !block !w-auto !float-none font-semibold !mb-0.5;
+    }
 
-        .edd-input,
-        .edd-select {
-            @apply !w-full !max-w-none rounded-md border border-solid border-neutral-300 bg-white py-[calc(--spacing(2)-1px)] px-[calc(--spacing(3)-1px)] text-base;
-        }
+    .edd-required-indicator {
+        @apply text-error-500 ml-0.5;
+    }
 
-        /* The same order as the checkout. */
-        #edd-card-address-wrap {
-            @apply order-1;
-        }
+    .edd-input,
+    .edd-select {
+        @apply !w-full !max-w-none rounded-md border border-solid border-neutral-300 bg-white py-[calc(--spacing(2)-1px)] px-[calc(--spacing(3)-1px)] text-base;
+    }
 
-        #edd-card-address-2-wrap {
-            @apply order-2;
-        }
+    /* The same order as the checkout. */
+    #edd-card-address-wrap {
+        @apply order-1;
+    }
 
-        #edd-card-city-wrap {
-            @apply order-3;
-        }
+    #edd-card-address-2-wrap {
+        @apply order-2;
+    }
 
-        #edd-card-zip-wrap {
-            @apply order-4;
-        }
+    #edd-card-city-wrap {
+        @apply order-3;
+    }
 
-        #edd-card-country-wrap {
-            @apply order-5;
-        }
+    #edd-card-zip-wrap {
+        @apply order-4;
+    }
 
-        #edd-card-state-wrap {
-            @apply order-6;
-        }
+    #edd-card-country-wrap {
+        @apply order-5;
+    }
 
-        [type=submit] {
-            @apply block w-full rounded-xl text-lg py-2.5 px-6 shadow-lg mt-6;
-        }
+    #edd-card-state-wrap {
+        @apply order-6;
+    }
+
+    [type=submit] {
+        @apply block w-full rounded-xl text-lg py-2.5 px-6 shadow-lg mt-6;
     }
 }
