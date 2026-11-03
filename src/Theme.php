@@ -84,6 +84,11 @@ class Theme {
         new AffiliateArea();
 
         /**
+         * Comment pages, e.g. of the reviews on product pages.
+         */
+        new CommentPages();
+
+        /**
          * Additional templates
          */
         add_action( 'kadence_before_footer', [ $this, 'maybe_add_usp_footer' ], 8 );
