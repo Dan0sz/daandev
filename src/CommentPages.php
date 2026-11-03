@@ -76,7 +76,7 @@ class CommentPages {
 
 		$post_id  = get_queried_object_id();
 		$per_page = max( 1, (int) get_option( 'comments_per_page' ) );
-		$pages    = get_comment_pages_count( get_comments( [ 'post_id' => $post_id, 'status' => 'approve' ] ), $per_page );
+		$pages    = get_comment_pages_count( get_comments( [ 'post_id' => $post_id, 'status' => 'approve', 'include_unapproved' => $this->get_unapproved_authors() ] ), $per_page );
 
 		// Same count as EDD Reviews' render_reviews().
 		if ( function_exists( 'edd_reviews' ) && get_post_type( $post_id ) === 'download' ) {
@@ -85,5 +85,20 @@ class CommentPages {
 		}
 
 		return max( 1, $pages );
+	}
+
+	/**
+	 * Like WordPress' comments_template(), commenters see their own comments awaiting moderation, which can add a page.
+	 *
+	 * @return array User ID or email address of the current commenter.
+	 */
+	private function get_unapproved_authors() {
+		if ( get_current_user_id() ) {
+			return [ get_current_user_id() ];
+		}
+
+		$email = wp_get_unapproved_comment_author_email();
+
+		return $email ? [ $email ] : [];
 	}
 }
