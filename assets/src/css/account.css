@@ -37,15 +37,21 @@
     @apply w-full border-collapse;
 
     thead th {
-        @apply pb-3 border-0 border-b border-solid border-neutral-200;
+        @apply pb-3 pr-4 border-0 border-b border-solid border-neutral-200;
     }
 
     tbody td {
-        @apply py-6 align-top border-0 border-b border-solid border-neutral-100;
+        @apply py-6 pr-4 align-top border-0 border-b border-solid border-neutral-100;
+    }
 
-        &:first-child {
-            @apply w-1/2 pr-8;
-        }
+    th:last-child, td:last-child {
+        @apply pr-0;
+    }
+
+    /* License Keys: the license key on the left, its details on the right. The same table (same ID) also lists the
+       licenses of an order, with a column per detail. */
+    &:has(th.edd_sl_details) tbody td:first-child {
+        @apply w-1/2 pr-8;
     }
 
     tbody tr:last-child td {
@@ -79,7 +85,7 @@
 
 /* On smaller screens, each license key is shown below its name. */
 @media (max-width: 1023px) {
-    .eba__content #edd_sl_license_keys {
+    .eba__content #edd_sl_license_keys:has(th.edd_sl_details) {
         @apply !block;
 
         /* Hidden, but still read by screen readers. */
@@ -131,5 +137,13 @@
         .edd-order-item__product {
             @apply mb-3 py-3 px-4 rounded-lg border border-solid border-neutral-200;
         }
+    }
+}
+
+/* Table cards on smaller screens (EDD Better Account): the label doesn't take the color of the value, e.g. a green
+   license status. */
+@media (max-width: 1023px) {
+    .eba__content .eba-table td::before {
+        @apply text-neutral-900;
     }
 }
