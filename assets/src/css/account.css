@@ -1,10 +1,12 @@
 /* Account pages with tabs (EDD Better Account): show the light blue body background, like the Update Payment Method page. */
-.has-account-tabs #wrapper {
+.has-account-tabs #wrapper,
+.has-account-login #wrapper {
     @apply bg-transparent;
 }
 
 /* Kadence's narrow content width leaves too little room next to the tabs. */
-.has-account-tabs.content-width-narrow .content-container.site-container {
+.has-account-tabs.content-width-narrow .content-container.site-container,
+.has-account-login.content-width-narrow .content-container.site-container {
     max-width: var(--global-content-width);
 }
 
@@ -29,6 +31,20 @@
     .edd-recurring__update--content,
     #edd-recurring-form {
         @apply !p-0 !rounded-none !bg-transparent !border-0 !shadow-none;
+    }
+}
+
+/* The login form on a white card, like the account pages. */
+.has-account-login .eba-login__card {
+    @apply border-0 border-t-4 border-solid border-primary-500 shadow-xl;
+
+    input[type="text"], input[type="email"], input[type="password"] {
+        @apply rounded-md border border-solid border-neutral-300 bg-neutral-50 py-[calc(--spacing(2)-1px)] px-[calc(--spacing(3)-1px)] text-neutral-900;
+    }
+
+    /* Notices stick out of the content a bit elsewhere, but stay on the card here. */
+    .notice, .edd-alert {
+        @apply lg:!mx-0 rounded-md;
     }
 }
 
