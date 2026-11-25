@@ -153,10 +153,17 @@ class Theme {
         if ( ! function_exists( 'edd_reviews' ) || ! is_singular( get_post_type() ) || get_post_type() !== 'download' || edd_is_checkout() ) {
             return;
         }
+
+        $reviews = edd_reviews()->load_frontend( '' );
+
+        // Empty if reviews are disabled for this product.
+        if ( ! trim( $reviews ) ) {
+            return;
+        }
         ?>
         <div class="daan-dev-reviews bg-primary-50 py-12 lg:py-16">
             <div class="site-container">
-                <?php echo edd_reviews()->load_frontend( '' ); ?>
+                <?php echo $reviews; ?>
             </div>
         </div>
         <?php
