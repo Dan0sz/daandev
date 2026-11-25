@@ -84,6 +84,11 @@ class Theme {
         new AffiliateArea();
 
         /**
+         * Product pages of free plugins.
+         */
+        new FreeDownloads();
+
+        /**
          * Comment pages, e.g. of the reviews on product pages.
          */
         new CommentPages();
@@ -161,6 +166,10 @@ class Theme {
      * @return void
      */
     public function maybe_add_usp_footer() {
+        if ( FreeDownloads::is_free_download() ) {
+            return;
+        }
+
         if ( ( is_singular( get_post_type() ) && get_post_type() === 'download' ) || edd_is_checkout() ) {
             get_template_part( 'template-parts/content/usp' );
         }
